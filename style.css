@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Habits App - Main Stylesheet (Root Bridge)
+   ========================================================================== */
+
+@import url('./css/theme.css');
+@import url('./css/layout.css');
+@import url('./css/components.css');
+
+/* إزالة أشرطة التمرير كلياً من كامل التطبيق (Zero-Scrollbar Pure Apple Experience) */
+html,
+body,
+*,
+*::before,
+*::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  max-width: 0px !important;
+  max-height: 0px !important;
+  background: transparent !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  display: none !important;
+  background: transparent !important;
+  border: none !important;
+}

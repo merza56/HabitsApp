@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الأدوات والإنتاجية | عاداتي برو Bento Habits</title>
+
+  <!-- iOS & PWA Viewport & Fullscreen Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="أدوات عاداتي">
+  <meta name="application-name" content="أدوات عاداتي">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F6FA">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121316">
+
+  <!-- Icons & Web Manifest -->
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Core Bento Editorial Pro Modular Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Zero-Scrollbar Strict Enforcement (Pure Apple Experience) -->
+  <style>
+    html, body, *, *::before, *::after {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    ::-webkit-scrollbar,
+    *::-webkit-scrollbar,
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none !important;
+      width: 0px !important;
+      height: 0px !important;
+      max-width: 0px !important;
+      max-height: 0px !important;
+      background: transparent !important;
+      -webkit-appearance: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    /* Tools Grid Bento Architecture */
+    .tools-catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      width: 100%;
+    }
+    @media (min-width: 640px) {
+      .tools-catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .tools-catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .tool-entry-card {
+      background: var(--card-white);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-bento);
+      padding: clamp(18px, 4vw, 24px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-bento);
+      border: 1px solid var(--border-glass);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: all 0.22s var(--spring-bounce);
+    }
+    .tool-entry-card:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: var(--shadow-card-hover);
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    [data-theme="dark"] .tool-entry-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .tool-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .tool-icon-wrapper {
+      width: clamp(48px, 10vw, 56px);
+      height: clamp(48px, 10vw, 56px);
+      border-radius: 18px;
+      background: var(--card-gray-subtle);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(24px, 5vw, 28px);
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+      transition: transform 0.2s var(--spring-bounce);
+    }
+    .tool-entry-card:hover .tool-icon-wrapper {
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .tool-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tool-num-chip {
+      font-size: 11px;
+      font-weight: 850;
+      color: var(--ios-blue);
+      letter-spacing: 0.5px;
+    }
+
+    .tool-category-chip {
+      font-size: 10.5px;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-secondary);
+    }
+    [data-theme="dark"] .tool-category-chip {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .tool-body-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tool-main-title {
+      font-size: clamp(16px, 3.8vw, 18.5px);
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+    }
+
+    .tool-author-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+    }
+
+    .tool-snippet-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-top: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .tool-footer-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--ios-blue);
+    }
+
+    .open-arrow-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 122, 255, 0.1);
+      color: var(--ios-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: transform 0.18s ease;
+    }
+    .tool-entry-card:hover .open-arrow-circle {
+      transform: translateX(-3px);
+      background: var(--ios-blue);
+      color: #FFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="bento-toast">
+    <span id="toastMessage">تم التحديث بنجاح</span>
+    <button id="toastUndoBtn" class="toast-undo-btn">تراجع ↺</button>
+  </div>
+
+  <div class="bento-app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav-bar">
+      <a href="./index.html" class="user-profile-badge" id="toolsProfileBadge" style="text-decoration:none; color:inherit;">
+        <div class="user-avatar-circle" id="userAvatarText">👤</div>
+        <div class="user-meta-texts">
+          <span class="user-welcome-sub">الأدوات والإنتاجية 🛠️</span>
+          <span class="user-name-title" id="userNameText">عبدالله</span>
+        </div>
+      </a>
+
+      <!-- Desktop & iPad Segmented Nav Switcher -->
+      <nav class="desktop-nav-bar" id="desktopNavSwitcher">
+        <a href="./index.html?panel=panelToday" class="desktop-tab-btn" style="text-decoration:none;">اليوم والعادات</a>
+        <a href="./index.html?panel=panelTasks" class="desktop-tab-btn" style="text-decoration:none;">المهام والإقلاع</a>
+        <a href="./index.html?panel=panelAnalytics" class="desktop-tab-btn" style="text-decoration:none;">التحليلات والخريطة</a>
+        <button type="button" class="desktop-tab-btn active">الأدوات (15) 🛠️</button>
+      </nav>
+
+      <div class="top-bar-actions">
+        <button id="themeToggleBtn" class="icon-btn-circle" aria-label="تبديل الثيم" title="تبديل الوضع">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <a href="./download.html" class="icon-btn-circle" title="تثبيت التطبيق على الشاشة الرئيسية" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </a>
+        <a href="./index.html" class="icon-btn-circle dark-btn" title="الرجوع للرئيسية" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Master Bento Content Grid -->
+    <div class="bento-content-grid">
+      
+      <!-- 1. Hero Editorial Card -->
+      <article class="bento-hero-card">
+        <span class="hero-subtitle">الترسانة السلوكية والإنتاجية المتكاملة</span>
+        <h1 class="hero-editorial-title" id="heroTitleText">
+          كتالوج الأدوات الـ 15 🛠️ اختر الأداة التي تحتاجها الآن لتدخل صفحتها المتكاملة فوراً.
+        </h1>
+        <div class="hero-pill-row">
+          <div class="pill-stat-btn">
+            <span>⏱️</span>
+            <span>5 أدوات لإدارة الوقت</span>
+          </div>
+          <div class="pill-stat-btn">
+            <span>🧠</span>
+            <span>5 أدوات لعلم النفس السلوكي</span>
+          </div>
+          <div class="pill-stat-btn">
+            <span>📋</span>
+            <span>5 أدوات للتخطيط الاستراتيجي</span>
+          </div>
+          <a href="./index.html" class="circle-arrow-btn" title="العودة للوحة العادات" style="text-decoration:none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. Category Filter Pills -->
+      <div class="tags-filter-bar" id="toolsFilterBar">
+        <button type="button" class="filter-tag-pill active" data-filter="all">#الكل (15 أداة)</button>
+        <button type="button" class="filter-tag-pill" data-filter="focus">#إدارة_الوقت_والتركيز ⏱️</button>
+        <button type="button" class="filter-tag-pill" data-filter="habit">#علم_النفس_وبناء_العادات 🧠</button>
+        <button type="button" class="filter-tag-pill" data-filter="planning">#التخطيط_وترتيب_الأولويات 📋</button>
+      </div>
+
+      <!-- 3. The 15 Tool Icons Catalog Grid -->
+      <div class="tools-catalog-grid" id="toolsCatalogGrid">
+
+        <a href="./tool.html?id=pomodoro" class="tool-entry-card" data-category="focus">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🍅</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">01</span>
+                <span class="tool-category-chip">إدارة الوقت والتركيز</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">مؤقت البومودورو للتركيز</h2>
+              <span class="tool-author-name">Francesco Cirillo</span>
+              <p class="tool-snippet-text">جلسات تركيز عميق 25 دقيقة واستراحة 5 دقائق مرتبطة بالعادات و XP</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=two_minute" class="tool-entry-card" data-category="habit">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">⏳</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">02</span>
+                <span class="tool-category-chip">علم النفس وبناء العادات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">قاعدة الدقيقتين الخاطفتين</h2>
+              <span class="tool-author-name">James Clear & David Allen</span>
+              <p class="tool-snippet-text">إذا كانت المهمة تأخذ أقل من دقيقتين فنفذها فوراً، والعادة الصعبة ابدأها بدقيقتين</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=five_second_rule" class="tool-entry-card" data-category="focus">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🚀</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">03</span>
+                <span class="tool-category-chip">إدارة الوقت والتركيز</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">صاروخ الـ 5 ثوانٍ لكسر التسويف</h2>
+              <span class="tool-author-name">Mel Robbins</span>
+              <p class="tool-snippet-text">العد التنازلي 5-4-3-2-1 والتحرك الجسدي لقطع إشارات التردد الدماغي</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=eisenhower_matrix" class="tool-entry-card" data-category="planning">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🔲</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">04</span>
+                <span class="tool-category-chip">التخطيط وترتيب الأولويات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">مصفوفة أيزنهاور لفرز الأولويات</h2>
+              <span class="tool-author-name">Dwight D. Eisenhower & Stephen Covey</span>
+              <p class="tool-snippet-text">تصنيف المهام حسب الأهمية والاستعجال مع مزامنة كاملة لقائمة To-Do اليوم</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=habit_stacking" class="tool-entry-card" data-category="habit">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🔗</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">05</span>
+                <span class="tool-category-chip">علم النفس وبناء العادات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">مخطط تراكم العادات العصبي</h2>
+              <span class="tool-author-name">Dr. BJ Fogg & James Clear</span>
+              <p class="tool-snippet-text">ربط العادة الجديدة بروتين يومي راسخ لسهولة ترسيخ المسارات العصبية</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=ivy_lee" class="tool-entry-card" data-category="planning">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">📝</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">06</span>
+                <span class="tool-category-chip">التخطيط وترتيب الأولويات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">طريقة آيفي لي (أهم 6 مهام)</h2>
+              <span class="tool-author-name">Ivy Lee & Charles M. Schwab</span>
+              <p class="tool-snippet-text">حصر اليوم في 6 مهام كبرى فقط مع تركيز أحادي صارم ومكافأة +50 XP</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=temptation_bundling" class="tool-entry-card" data-category="habit">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🎁</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">07</span>
+                <span class="tool-category-chip">علم النفس وبناء العادات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">حزم المغريات ومضاعفة الدوبامين</h2>
+              <span class="tool-author-name">Prof. Katy Milkman</span>
+              <p class="tool-snippet-text">دمج نشاط شاق تريد الالتزام به مع نشاط ممتع تحبه وتتشوق إليه</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=focus_sound_40hz" class="tool-entry-card" data-category="focus">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🎧</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">08</span>
+                <span class="tool-category-chip">إدارة الوقت والتركيز</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">موجات التركيز الذهني العميق 40Hz</h2>
+              <span class="tool-author-name">Cal Newport & MIT Research</span>
+              <p class="tool-snippet-text">توليد نغمات وموجات غاما 40Hz الحقيقية محلياً عبر Web Audio لعزل المشتتات</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=woop_framework" class="tool-entry-card" data-category="planning">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🎯</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">09</span>
+                <span class="tool-category-chip">التخطيط وترتيب الأولويات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">إطار ووب العلمي للأهداف (WOOP)</h2>
+              <span class="tool-author-name">Dr. Gabriele Oettingen</span>
+              <p class="tool-snippet-text">التباين الذهني العلمي: رغبة، نتيجة، عقبة داخلية، وخطة (إذا... فسوف...)</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=pareto_analysis" class="tool-entry-card" data-category="planning">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">⚖️</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">10</span>
+                <span class="tool-category-chip">التخطيط وترتيب الأولويات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">محلل مبدأ باريتو (قاعدة 80/20)</h2>
+              <span class="tool-author-name">Vilfredo Pareto & Richard Koch</span>
+              <p class="tool-snippet-text">اكتشاف الـ 20% الذهبية من العادات والمهام التي تولد 80% من نتائج حياتك</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=time_boxing" class="tool-entry-card" data-category="focus">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">📦</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">11</span>
+                <span class="tool-category-chip">إدارة الوقت والتركيز</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">تقنية صندوق الوقت (Time Boxing)</h2>
+              <span class="tool-author-name">Harvard Business Review</span>
+              <p class="tool-snippet-text">تخصيص كتل زمنية محكمة ومغلقة لكل مهمة لمنع تمدد العمل وقانون باركنسون</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=habit_scorecard" class="tool-entry-card" data-category="habit">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">📊</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">12</span>
+                <span class="tool-category-chip">علم النفس وبناء العادات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">بطاقة تدقيق وتصنيف العادات</h2>
+              <span class="tool-author-name">James Clear</span>
+              <p class="tool-snippet-text">جرد روتينك اليومي وتصنيف كل عادة بوعي (+ إيجابي، - سلبي، = محايد)</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=twenty_second_rule" class="tool-entry-card" data-category="habit">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">⚡</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">13</span>
+                <span class="tool-category-chip">علم النفس وبناء العادات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">قاعدة الـ 20 ثانية لتقليل الاحتكاك</h2>
+              <span class="tool-author-name">Shawn Achor</span>
+              <p class="tool-snippet-text">تقليل وقت وجهد البداية 20 ثانية يجعل العادة سهلة، وزيادته 20 ثانية يوقف العادة السيئة</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=habit_contract" class="tool-entry-card" data-category="habit">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">📜</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">14</span>
+                <span class="tool-category-chip">علم النفس وبناء العادات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">ميثاق العادة وشريك المحاسبة</h2>
+              <span class="tool-author-name">Behavioral Economics</span>
+              <p class="tool-snippet-text">توقيع وثيقة التزام رسمية مع شريك ومسؤولية حقيقية بالاستفادة من نفور الخسارة</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+        <a href="./tool.html?id=stoic_reflection" class="tool-entry-card" data-category="planning">
+          <div>
+            <div class="tool-entry-header">
+              <div class="tool-icon-wrapper">🌙</div>
+              <div class="tool-badge-row">
+                <span class="tool-num-chip">15</span>
+                <span class="tool-category-chip">التخطيط وترتيب الأولويات</span>
+              </div>
+            </div>
+            <div class="tool-body-content" style="margin-top:14px;">
+              <h2 class="tool-main-title">المراجعة المسائية والتدوين الرواقي</h2>
+              <span class="tool-author-name">Marcus Aurelius & Seneca</span>
+              <p class="tool-snippet-text">جلسة مساءلة فلسفية ليلية تغذي تلقائياً تقريرك الشهري ونقاط XP</p>
+            </div>
+          </div>
+          <div class="tool-footer-action">
+            <span>دخول صفحة الأداة المتكاملة</span>
+            <div class="open-arrow-circle">←</div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- Floating Bottom Bento Dock (Apple Liquid Glass) -->
+    <nav class="bento-floating-dock" id="bentoTabBar">
+      <a href="index.html?panel=panelToday" class="dock-tab-btn" aria-label="اليوم والعادات" title="اليوم والعادات" style="text-decoration:none; display:flex; align-items:center; justify-content:center; color:inherit;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+        </svg>
+      </a>
+
+      <a href="index.html?panel=panelTasks" class="dock-tab-btn" aria-label="المهام والإقلاع" title="المهام والإقلاع" style="text-decoration:none; display:flex; align-items:center; justify-content:center; color:inherit;">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+      </a>
+
+      <a href="index.html?panel=panelAnalytics" class="dock-tab-btn" aria-label="التحليلات والخريطة" title="التحليلات السنوية والشهرية" style="text-decoration:none; display:flex; align-items:center; justify-content:center; color:inherit;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+      </a>
+
+      <a href="tools.html" class="dock-tab-btn active" aria-label="الأدوات والإنتاجية" title="كتالوج الأدوات الـ 15" style="text-decoration:none; display:flex; align-items:center; justify-content:center; color:inherit;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+        </svg>
+      </a>
+
+      <a href="index.html" class="dock-tab-btn" aria-label="الرئيسية" title="الرئيسية" style="text-decoration:none; display:flex; align-items:center; justify-content:center; color:inherit;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="js/core/auth-manager.js"></script>
+  <script src="js/core/tools-engine.js"></script>
+  <script src="js/core/tools-data.js"></script>
+  <script>
+    (function() {
+      // User Profile Header
+      let currentUser = { name: 'عبدالله', avatar: '👤' };
+      try {
+        const users = JSON.parse(localStorage.getItem('habits_users_registry_v2') || '[]');
+        const activeId = localStorage.getItem('habits_active_user_id_v2') || (window.sessionStorage ? sessionStorage.getItem('habits_active_user_id_v2') : null);
+        if (activeId && users.length) {
+          const found = users.find(u => u.id === activeId);
+          if (found) currentUser = { name: found.username || 'عبدالله', avatar: found.avatar || '👤' };
+        } else if (users.length) {
+          currentUser = { name: users[0].username || 'عبدالله', avatar: users[0].avatar || '👤' };
+        }
+      } catch (e) {}
+
+      if (currentUser && currentUser.name) {
+        const uEl = document.getElementById('userNameText');
+        if (uEl) uEl.textContent = currentUser.name;
+        const avEl = document.getElementById('userAvatarText');
+        if (avEl) avEl.textContent = currentUser.avatar || '👤';
+      }
+
+      // Theme Toggle Handler
+      const themeBtn = document.getElementById('themeToggleBtn');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('habitflow_theme', newTheme);
+        });
+      }
+      const savedTheme = localStorage.getItem('habitflow_theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+
+      // Filter Buttons
+      const filterPills = document.querySelectorAll('.filter-tag-pill');
+      const cards = document.querySelectorAll('.tool-entry-card');
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          const filter = pill.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,3586 @@
+/* ==========================================================================
+   Habits App - Bento Editorial Pro Components (Fully Responsive & Optimized)
+   عناصر واجهة متناسقة مع كافة مقاسات الشاشات: موبايل، تابلت، ديسكتوب
+   خالية تماماً من تعارض الحركات، الضبابية، والقفزات المفاجئة
+   ========================================================================== */
+
+/* =========================================
+   1. بطاقة الترحيب والتقييم الحواري (Hero Card)
+   ========================================= */
+.bento-hero-card {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+}
+
+.hero-subtitle {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-editorial-title {
+  font-size: clamp(19px, 4.8vw, 26px);
+  font-weight: 850;
+  line-height: 1.32;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.inline-avatar {
+  display: inline-flex;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #E5E7EB;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin: 0 4px;
+}
+
+.inline-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  background: var(--priority-high-bg);
+  color: var(--priority-high-text);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+
+.hero-pill-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.pill-stat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .pill-stat-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.circle-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  margin-inline-start: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.12s ease;
+}
+
+[data-theme="dark"] .circle-arrow-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.circle-arrow-btn:active {
+  transform: scale(0.92);
+}
+
+/* =========================================
+   2. بطاقة التقدم الصفراء (Warm Butter Yellow)
+   ========================================= */
+.bento-yellow-card {
+  background: var(--card-yellow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(14px, 3.5vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #121316;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .bento-yellow-card {
+  border: 1px solid var(--border-glass);
+  color: #F8F9FA;
+}
+
+.yellow-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.yellow-mini-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.bento-segmented-toggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.segmented-option {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: #121316;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.segmented-option.active {
+  background: #121316;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.yellow-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.yellow-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.yellow-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(18, 19, 22, 0.7);
+  white-space: nowrap;
+}
+
+.yellow-headline {
+  font-size: clamp(15px, 4vw, 20px);
+  font-weight: 850;
+  color: #121316;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+
+.yellow-giant-percentage {
+  font-size: clamp(30px, 7.5vw, 44px);
+  font-weight: 900;
+  color: #121316;
+  letter-spacing: -1px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   3. بطاقة النعناعي السماوي (Mint Cyan Card)
+   ========================================= */
+.bento-mint-card {
+  background: var(--card-mint);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #0B2522;
+  gap: 10px;
+}
+
+[data-theme="dark"] .bento-mint-card {
+  border: 1px solid var(--border-glass);
+  color: #ECFDF5;
+}
+
+.mint-card-text {
+  font-size: clamp(12.5px, 3.2vw, 14px);
+  font-weight: 750;
+  flex: 1;
+  line-height: 1.35;
+}
+
+.mint-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mint-refresh-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.2s ease;
+}
+
+.mint-refresh-btn:active {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   4. شريط تقويم الأيام التفاعلي (Day Strip)
+   ========================================= */
+.day-strip-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 2px 2px 8px 2px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.day-strip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.day-strip-card {
+  scroll-snap-align: center;
+  min-width: clamp(54px, 13vw, 62px);
+  padding: 10px 4px;
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s var(--spring-bounce);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.day-strip-card:active {
+  transform: scale(0.92);
+}
+
+.day-strip-card.active {
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border-color: var(--card-dark);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+}
+
+[data-theme="dark"] .day-strip-card.active {
+  background: var(--ios-blue);
+  color: #FFFFFF;
+  border-color: var(--ios-blue);
+  box-shadow: 0 4px 18px rgba(10, 132, 255, 0.45);
+}
+
+.day-strip-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+}
+
+.day-strip-card.active .day-strip-name {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.day-strip-num {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.day-strip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.day-strip-card.active .day-strip-dot {
+  background: #38EF7D;
+  box-shadow: 0 0 6px #38EF7D;
+}
+
+/* =========================================
+   5. شريط فترات اليوم والوسوم (Time & Tags)
+   ========================================= */
+.time-of-day-bar, .tags-filter-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.time-of-day-bar::-webkit-scrollbar,
+.tags-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.time-segment-pill {
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: all 0.18s var(--spring-bounce);
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.time-segment-pill.active {
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border-color: var(--border-dark);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .time-segment-pill.active {
+  background: var(--ios-blue);
+  color: #FFFFFF;
+  border-color: var(--ios-blue);
+  box-shadow: 0 2px 12px rgba(10, 132, 255, 0.45);
+}
+
+.filter-tag-pill {
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: all 0.18s var(--spring-bounce);
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .filter-tag-pill {
+  background: var(--card-white);
+  border-color: var(--border-glass);
+}
+
+.filter-tag-pill.active {
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border-color: var(--border-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .filter-tag-pill.active {
+  background: var(--ios-blue);
+  color: #FFFFFF;
+  border-color: var(--ios-blue);
+  box-shadow: 0 2px 12px rgba(10, 132, 255, 0.45);
+}
+
+/* =========================================
+   6. بطاقة العادات والمهام الرئيسية (Bento White Card)
+   ========================================= */
+.bento-card-white {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+}
+
+.tasks-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .date-pill-badge {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.editorial-tasks-headline {
+  font-size: clamp(17px, 4.2vw, 22px);
+  font-weight: 850;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.habit-stack-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #3B82F6;
+  background: rgba(59, 130, 246, 0.08);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  margin-top: 2px;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+/* =========================================
+   7. بنود العادات المتجاوبة (Check, Counter, Timer)
+   خالية تماماً من انقطاع النصوص أو اهتزاز التحجيم
+   ========================================= */
+.bento-habit-item {
+  background: var(--card-gray-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 22px;
+  padding: clamp(12px, 3vw, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.22s var(--spring-bounce);
+}
+
+.bento-habit-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .bento-habit-item:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.habit-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.habit-left-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  touch-action: manipulation;
+  transition: opacity 0.15s ease;
+}
+
+.habit-left-meta:active {
+  opacity: 0.75;
+}
+
+.habit-avatar-badge {
+  width: clamp(38px, 9vw, 44px);
+  height: clamp(38px, 9vw, 44px);
+  border-radius: 16px;
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(18px, 4.5vw, 22px);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  transition: transform 0.18s var(--spring-bounce);
+}
+
+.habit-info-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-title-text {
+  font-size: clamp(14px, 3.6vw, 15.5px);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.habit-sub-streak {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.habit-right-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* زر التحقق الدائري بنظام Apple Glass */
+.bento-check-circle {
+  width: clamp(38px, 9vw, 44px);
+  height: clamp(38px, 9vw, 44px);
+  border-radius: 50%;
+  border: 2px solid var(--border-medium);
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: transparent;
+  touch-action: manipulation;
+  transition: all 0.22s var(--spring-bounce);
+}
+
+[data-theme="dark"] .bento-check-circle {
+  background: var(--card-white);
+  border-color: var(--border-glass);
+}
+
+.bento-check-circle:active {
+  transform: scale(0.86);
+}
+
+.bento-check-circle.completed {
+  background: var(--ios-green);
+  border-color: var(--ios-green);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(48, 209, 88, 0.42);
+  transform: scale(1.04);
+}
+
+[data-theme="dark"] .bento-check-circle.completed {
+  background: var(--ios-green);
+  border-color: var(--ios-green);
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(48, 209, 88, 0.55);
+}
+
+/* أزرار العداد الرقمي (+/-) */
+.stepper-control-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(3px, 1vw, 6px);
+  flex-shrink: 0;
+}
+
+.stepper-btn {
+  width: clamp(32px, 7.5vw, 36px);
+  height: clamp(32px, 7.5vw, 36px);
+  border-radius: 50%;
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  transition: all 0.18s var(--spring-bounce);
+  box-shadow: var(--shadow-sm);
+}
+
+.stepper-btn:active {
+  transform: scale(0.86);
+}
+
+.stepper-counter-text {
+  font-size: clamp(12px, 3.2vw, 13.5px);
+  font-weight: 800;
+  min-width: clamp(32px, 7vw, 40px);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* أزرار مؤقت التركيز */
+.timer-control-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.timer-countdown-display {
+  font-size: clamp(12px, 3.2vw, 13.5px);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .timer-countdown-display {
+  background: var(--card-white);
+  border-color: var(--border-glass);
+}
+
+.timer-play-btn {
+  width: clamp(34px, 8vw, 38px);
+  height: clamp(34px, 8vw, 38px);
+  border-radius: 50%;
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border: 1px solid var(--border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.18s var(--spring-bounce);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .timer-play-btn {
+  background: var(--ios-blue);
+  color: #FFFFFF;
+  border-color: var(--ios-blue);
+  box-shadow: 0 4px 14px rgba(10, 132, 255, 0.45);
+}
+
+.timer-play-btn:active {
+  transform: scale(0.88);
+}
+
+/* شبكة الأيام السبعة أسفل كل عادة */
+.bento-dots-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 2px;
+}
+
+[data-theme="dark"] .bento-dots-row {
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.bento-dot-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.bento-dot-label {
+  font-size: clamp(9.5px, 2.6vw, 11px);
+  font-weight: 700;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.bento-dot-circle {
+  width: clamp(12px, 3.2vw, 15px);
+  height: clamp(12px, 3.2vw, 15px);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.07);
+  transition: background-color 0.15s ease;
+}
+
+[data-theme="dark"] .bento-dot-circle {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bento-dot-circle.active {
+  background: var(--card-dark);
+}
+
+[data-theme="dark"] .bento-dot-circle.active {
+  background: #FFFFFF;
+}
+
+.bento-dot-unit.is-today .bento-dot-label {
+  color: var(--text-primary);
+  font-weight: 900;
+}
+
+/* =========================================
+   8. تتبع الإقلاع عن العادات السلبية (Quit Bad Habits)
+   ========================================= */
+.bento-quit-card {
+  background: var(--card-dark-glass);
+  backdrop-filter: blur(32px) saturate(210%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%);
+  border: 1px solid var(--border-dark);
+  color: #FFFFFF;
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-dark);
+}
+
+.quit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.quit-title-group h3 {
+  font-size: clamp(17px, 4vw, 19px);
+  font-weight: 850;
+}
+
+.quit-title-group span {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.quit-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quit-item-row {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 360px) {
+  .quit-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .quit-reset-btn {
+    align-self: flex-end;
+  }
+}
+
+.quit-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.quit-item-name {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quit-time-ticker {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--card-yellow);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.quit-savings-chip {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #38EF7D;
+  background: rgba(56, 239, 125, 0.12);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.quit-reset-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: opacity 0.15s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.quit-reset-btn:active {
+  opacity: 0.75;
+}
+
+/* =========================================
+   9. الخريطة السنوية الشاملة 365 يوماً
+   ========================================= */
+.annual-matrix-card {
+  padding: clamp(16px, 3.8vw, 24px);
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+  overflow: hidden;
+}
+
+.annual-matrix-scroll-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  contain: paint;
+}
+
+.annual-matrix-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.annual-matrix-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-flow: column;
+  grid-auto-columns: 12px;
+  gap: 4px;
+  min-width: 680px;
+}
+
+.annual-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: #F3F4F6;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .annual-dot {
+  background: #252830;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.annual-dot.level-1 { background: #E8F8F2; }
+.annual-dot.level-2 { background: #A7F3D0; }
+.annual-dot.level-3 { background: #34D399; }
+.annual-dot.level-4 { background: var(--card-dark); }
+
+[data-theme="dark"] .annual-dot.level-4 {
+  background: #FFFFFF;
+}
+
+/* شريط وضع الإجازة */
+.vacation-banner {
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  border-radius: 18px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #92400E;
+  font-size: 12.5px;
+  font-weight: 700;
+  gap: 10px;
+}
+
+/* =========================================
+   10. قائمة مهام اليوم (Daily To-Do List)
+   ========================================= */
+.bento-todo-input-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 380px) {
+  .bento-todo-input-form {
+    flex-wrap: wrap;
+  }
+  .bento-todo-input {
+    width: 100%;
+    flex: none;
+  }
+}
+
+.bento-todo-input {
+  flex: 1;
+  padding: 11px 14px;
+  border-radius: var(--radius-button);
+  background: #F3F4F6;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+  min-width: 0;
+}
+
+[data-theme="dark"] .bento-todo-input {
+  background: var(--card-dark-surface);
+}
+
+.bento-todo-input:focus {
+  background: #FFFFFF;
+  border-color: var(--card-dark);
+}
+
+[data-theme="dark"] .bento-todo-input:focus {
+  background: #1B1D23;
+  border-color: #FFFFFF;
+}
+
+.priority-select {
+  padding: 0 10px;
+  border-radius: var(--radius-button);
+  background: #F3F4F6;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+[data-theme="dark"] .priority-select {
+  background: var(--card-dark-surface);
+  color: var(--text-primary);
+}
+
+.bento-todo-add-btn {
+  padding: 0 16px;
+  border-radius: var(--radius-button);
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .bento-todo-add-btn {
+  background: #FFFFFF;
+  color: #0E1015;
+}
+
+.bento-todo-add-btn:active {
+  opacity: 0.8;
+}
+
+.bento-todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bento-todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #F9FAFB;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  transition: opacity 0.18s ease;
+  gap: 8px;
+}
+
+[data-theme="dark"] .bento-todo-item {
+  background: var(--card-dark-surface);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.bento-todo-item.done {
+  opacity: 0.5;
+}
+
+.bento-todo-item.done .bento-todo-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.bento-todo-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+/* =========================================
+   11. المخطط البياني الأسبوعي (Weekly Chart)
+   ========================================= */
+.weekly-chart-card {
+  padding: clamp(14px, 3.5vw, 18px);
+  background: var(--card-gray-subtle);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-bars-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100px;
+  padding: 10px 2px 0 2px;
+}
+
+.chart-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.chart-bar-fill {
+  width: clamp(16px, 4vw, 22px);
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-pill);
+  min-height: 8px;
+  transition: height 0.3s ease;
+}
+
+[data-theme="dark"] .chart-bar-fill {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.chart-bar-col.active .chart-bar-fill {
+  background: var(--card-dark);
+}
+
+[data-theme="dark"] .chart-bar-col.active .chart-bar-fill {
+  background: #FFFFFF;
+}
+
+.chart-bar-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.chart-bar-col.active .chart-bar-label {
+  color: var(--text-primary);
+  font-weight: 900;
+}
+
+/* =========================================
+   12. الخريطة الحرارية الشهرية (Monthly Heatmap)
+   ========================================= */
+.bento-heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.bento-heatmap-day {
+  aspect-ratio: 1;
+  border-radius: 9px;
+  background: #F3F4F6;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .bento-heatmap-day {
+  background: var(--card-dark-surface);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.bento-heatmap-day.level-1 { background: #E8F8F2; color: #10B981; }
+.bento-heatmap-day.level-2 { background: #A7F3D0; color: #065F46; }
+.bento-heatmap-day.level-3 { background: #34D399; color: #064E3B; font-weight: 900; }
+.bento-heatmap-day.level-4 { background: var(--card-dark); color: #FFFFFF; font-weight: 900; }
+.bento-heatmap-day.is-today { outline: 2px solid #3B82F6; outline-offset: 1px; }
+
+/* صناديق الإحصائيات (Stats Boxes) */
+.bento-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.bento-stat-box {
+  background: var(--card-gray-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 10px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bento-stat-val {
+  font-size: clamp(16px, 4.2vw, 22px);
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.bento-stat-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* =========================================
+   13. بطاقة التقييم الشهري (Dark Bento Recap Card)
+   ========================================= */
+.bento-recap-card {
+  background: var(--card-dark-glass);
+  backdrop-filter: blur(32px) saturate(220%);
+  -webkit-backdrop-filter: blur(32px) saturate(220%);
+  border: 1px solid var(--border-dark);
+  color: #FFFFFF;
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-float);
+}
+
+.recap-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recap-grade-circle {
+  width: clamp(44px, 11vw, 52px);
+  height: clamp(44px, 11vw, 52px);
+  border-radius: 50%;
+  background: var(--card-yellow);
+  color: #121316;
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(254, 228, 139, 0.4);
+  flex-shrink: 0;
+}
+
+.recap-narrative {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.recap-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.recap-metric-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.recap-metric-item .lbl { color: rgba(255, 255, 255, 0.55); }
+.recap-metric-item .val { color: #FFFFFF; font-weight: 800; }
+
+/* أوسمة الإنجازات (Badges Carousel) */
+.bento-badges-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bento-badges-row::-webkit-scrollbar {
+  display: none;
+}
+
+.bento-badge-chip {
+  background: var(--card-gray-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.bento-badge-chip.unlocked {
+  background: #FFFBEB;
+  border-color: #FDE68A;
+}
+
+[data-theme="dark"] .bento-badge-chip.unlocked {
+  background: #252216;
+  border-color: #4D411E;
+}
+
+.bento-badge-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* =========================================
+   14. عناصر النافذة المنبثقة (Modal Controls)
+   ========================================= */
+.sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: #E5E7EB;
+  margin: 0 auto 14px auto;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.close-btn {
+  background: #F3F4F6;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  transition: opacity 0.15s ease;
+}
+
+[data-theme="dark"] .close-btn {
+  background: var(--card-dark-surface);
+  color: #FFFFFF;
+}
+
+.close-btn:active {
+  opacity: 0.7;
+}
+
+.bento-form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-button);
+  background: #F3F4F6;
+  border: 1px solid transparent;
+  font-size: 14.5px;
+  font-family: inherit;
+  outline: none;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease;
+}
+
+[data-theme="dark"] .bento-form-input {
+  background: var(--card-dark-surface);
+  color: #FFFFFF;
+}
+
+.bento-form-input:focus {
+  background: #FFFFFF;
+  border-color: var(--card-dark);
+}
+
+[data-theme="dark"] .bento-form-input:focus {
+  background: #1B1D23;
+  border-color: #FFFFFF;
+}
+
+.bento-submit-btn {
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: var(--radius-button);
+  border: none;
+  background: var(--card-dark);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+  transition: opacity 0.15s ease;
+}
+
+[data-theme="dark"] .bento-submit-btn {
+  background: #FFFFFF;
+  color: #0E1015;
+}
+
+.bento-submit-btn:active {
+  opacity: 0.85;
+}
+
+/* =========================================
+   15. عناصر التخصيص والمظهر (Customization Engine Styles)
+   ========================================= */
+.palette-swatch {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  touch-action: manipulation;
+}
+
+.palette-swatch:active {
+  transform: scale(0.9);
+}
+
+.palette-swatch.active {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px var(--card-white), 0 0 0 4px var(--card-dark);
+}
+
+.category-mgmt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--card-gray-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+}
+
+.category-mgmt-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--text-primary);
+}
+
+.category-delete-btn {
+  background: none;
+  border: none;
+  color: #DC2626;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  touch-action: manipulation;
+}
+
+.category-delete-btn:hover {
+  background: rgba(220, 38, 38, 0.08);
+}
+
+/* =========================================
+   16. ستايلات السحب والإفلات (Drag and Drop Engine)
+   ========================================= */
+.bento-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  cursor: grab;
+  padding: 4px 6px;
+  border-radius: 8px;
+  touch-action: none;
+  opacity: 0.45;
+  transition: opacity 0.15s ease, color 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.bento-drag-handle:active {
+  cursor: grabbing;
+  opacity: 1;
+  color: var(--text-primary);
+}
+
+.bento-habit-item.is-dragging,
+.bento-todo-item.is-dragging {
+  opacity: 0.55 !important;
+  transform: scale(0.98);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15) !important;
+  z-index: 99 !important;
+}
+
+.bento-drop-placeholder {
+  border: 2px dashed rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin: 6px 0;
+  transition: all 0.15s ease;
+}
+
+[data-theme="dark"] .bento-drop-placeholder {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+
+
+/* ==========================================================================
+   17. شاشة اللوحة الرئيسية الحرة ومعرض الويدجتس (Universal Bento Canvas)
+   يدعم السحب والإفلات الكامل لكافة العناصر بدون استثناء
+   ========================================================================== */
+.canvas-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 4px 10px 4px;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.canvas-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 850;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.canvas-status-badge span {
+  font-size: 16px;
+}
+
+.canvas-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.canvas-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+  font-family: inherit;
+  border: 1px solid var(--border-subtle);
+  background: var(--card-white);
+  color: var(--text-primary);
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.canvas-btn.primary {
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border-color: var(--card-dark);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .canvas-btn.primary {
+  background: #FFFFFF;
+  color: #121316;
+  border-color: #FFFFFF;
+}
+
+.canvas-btn.active {
+  background: #3B82F6;
+  color: #FFFFFF;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.canvas-btn:active {
+  transform: scale(0.94);
+}
+
+/* الشبكة الهيكلية للوحة الويدجتس التكيفية مع كافة الشاشات */
+.bento-widget-canvas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 250px;
+  transition: all 0.25s ease;
+  align-items: stretch;
+}
+
+/* على الهواتف والشاشات الصغيرة (< 640px): كل ويدجت يشغل 100% من العرض بنقاء تام دون قص */
+.bento-widget-card {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+/* الأجهزة اللوحية والآيباد (2 أعمدة متناسقة) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .bento-widget-canvas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .bento-widget-card.span-1,
+  .bento-widget-card.size-sm,
+  .bento-widget-card.size-md {
+    grid-column: span 1 !important;
+  }
+
+  .bento-widget-card.span-2,
+  .bento-widget-card.span-full,
+  .bento-widget-card.size-lg,
+  .bento-widget-card.size-full {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* شاشات سطح المكتب والكمبيوتر (3 أعمدة مرنة متوازنة) */
+@media (min-width: 1024px) {
+  .bento-widget-canvas {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .bento-widget-card.span-1,
+  .bento-widget-card.size-sm,
+  .bento-widget-card.size-md {
+    grid-column: span 1 !important;
+  }
+
+  .bento-widget-card.span-2,
+  .bento-widget-card.size-lg {
+    grid-column: span 2 !important;
+  }
+
+  .bento-widget-card.span-full,
+  .bento-widget-card.size-full {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* بطاقة الويدجت المغلفة التكيفية */
+.bento-widget-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+/* تمدد البطاقات الداخلية لملء الارتفاع بالكامل ومنع الفراغات العمودية */
+.bento-widget-card > .bento-hero-card,
+.bento-widget-card > .bento-yellow-card,
+.bento-widget-card > .bento-mint-card,
+.bento-widget-card > .bento-card-white,
+.bento-widget-card > .bento-quit-card,
+.bento-widget-card > .left-matrix-widget,
+.bento-widget-card > .two-day-rule-card,
+.bento-widget-card > .habit-stacking-widget,
+.bento-widget-card > .bento-recap-card,
+.bento-widget-card > .reflection-widget,
+.bento-widget-card > .daily-quote-widget,
+.bento-widget-card > .bento-controls-card {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* بطاقة فلاتر التقويم والوسوم الموحدة */
+.bento-controls-card {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(14px, 3.5vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+}
+
+/* ----------------------------------------------------
+   أنماط الأحجام المختلفة للويدجتس (Modular Bento Sizes)
+   تصميم آمن لا يخفي السلاسل أو النقاط أبداً
+   ---------------------------------------------------- */
+/* 1. الحجم الصغير / المدمج (Size Small - Compact Tile) */
+.bento-widget-card.size-sm .bento-hero-card,
+.bento-widget-card.size-sm .bento-yellow-card,
+.bento-widget-card.size-sm .bento-mint-card,
+.bento-widget-card.size-sm .bento-card-white,
+.bento-widget-card.size-sm .bento-quit-card,
+.bento-widget-card.size-sm .left-matrix-widget,
+.bento-widget-card.size-sm .two-day-rule-card,
+.bento-widget-card.size-sm .habit-stacking-widget,
+.bento-widget-card.size-sm .bento-recap-card,
+.bento-widget-card.size-sm .reflection-widget,
+.bento-widget-card.size-sm .daily-quote-widget,
+.bento-widget-card.size-sm .bento-controls-card {
+  padding: 14px 16px !important;
+  gap: 10px !important;
+  border-radius: 20px;
+}
+
+.bento-widget-card.size-sm .hero-editorial-title {
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+}
+
+.bento-widget-card.size-sm .hero-subtitle {
+  font-size: 10.5px !important;
+}
+
+.bento-widget-card.size-sm .yellow-giant-percentage {
+  font-size: 32px !important;
+}
+
+.bento-widget-card.size-sm .yellow-headline {
+  font-size: 13.5px !important;
+}
+
+.bento-widget-card.size-sm .left-stat-number {
+  font-size: 28px !important;
+}
+
+.bento-widget-card.size-sm .bento-habit-item {
+  padding: 10px 12px !important;
+  gap: 8px !important;
+  border-radius: 16px !important;
+}
+
+.bento-widget-card.size-sm .habit-sub-streak {
+  font-size: 11px !important;
+}
+
+.bento-widget-card.size-sm .bento-dot-circle {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.bento-widget-card.size-sm .quick-stats-widget {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+}
+
+.bento-widget-card.size-sm .quick-stat-tile {
+  padding: 10px 8px !important;
+  border-radius: 16px !important;
+}
+
+.bento-widget-card.size-sm .quick-stat-num {
+  font-size: 18px !important;
+}
+
+.bento-widget-card.size-sm .quick-stat-lbl {
+  font-size: 10px !important;
+}
+
+/* 2. الحجم الكبير والبانورامي (Size Large & Full) */
+.bento-widget-card.size-lg .hero-editorial-title,
+.bento-widget-card.size-full .hero-editorial-title {
+  font-size: clamp(20px, 2.4vw, 26px) !important;
+}
+
+.bento-widget-card.size-lg .quick-stats-widget,
+.bento-widget-card.size-full .quick-stats-widget {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+/* مبدل القياسات السريع داخل شريط التحكم */
+.widget-size-switcher {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  gap: 2px;
+  align-items: center;
+}
+
+[data-theme="dark"] .widget-size-switcher {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.size-pill-btn {
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 10.5px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+  font-family: inherit;
+  transition: all 0.12s ease;
+  line-height: 1.2;
+}
+
+.size-pill-btn.active {
+  background: #3B82F6;
+  color: #FFFFFF;
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.35);
+}
+
+/* مقبض التحجيم السفلي في زاوية الويدجت */
+.widget-corner-resize-handle {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3B82F6;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 10;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+
+.widget-corner-resize-handle:active {
+  transform: scale(0.9);
+  background: #3B82F6;
+  color: #FFFFFF;
+}
+
+.bento-widget-card.is-customizing .widget-corner-resize-handle {
+  display: flex !important;
+}
+
+.bento-widget-card.is-dragging {
+  opacity: 0.45 !important;
+  transform: scale(0.98) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2) !important;
+  z-index: 100 !important;
+}
+
+/* وضع التخصيص التفاعلي */
+.bento-widget-card.is-customizing {
+  outline: 2px dashed #3B82F6;
+  outline-offset: 4px;
+  border-radius: var(--radius-bento);
+}
+
+.bento-widget-card.is-customizing .widget-header-toolbar {
+  display: flex !important;
+}
+
+/* شريط تحكم الويدجت */
+.widget-header-toolbar {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius-pill);
+  gap: 8px;
+  animation: bentoFadeIn 0.15s ease;
+}
+
+.widget-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  color: #3B82F6;
+  font-size: 15px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.12);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.widget-drag-handle:active {
+  cursor: grabbing;
+  background: #3B82F6;
+  color: #FFFFFF;
+}
+
+.widget-badge-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.widget-actions-cluster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.widget-tool-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--card-white);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.12s ease, background 0.15s;
+}
+
+.widget-tool-btn:active {
+  transform: scale(0.9);
+}
+
+.widget-tool-btn.widget-remove-btn {
+  color: #DC2626;
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+.widget-tool-btn.widget-remove-btn:hover {
+  background: #FEE2E2;
+}
+
+/* =========================================
+   18. معرض الويدجتس (Widget Gallery Sheet)
+   ========================================= */
+.gallery-tabs-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-tabs-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-tab-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .gallery-tab-pill {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.gallery-tab-pill.active {
+  background: var(--card-dark);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .gallery-tab-pill.active {
+  background: #FFFFFF;
+  color: #121316;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+@media (min-width: 540px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gallery-widget-item {
+  background: var(--card-gray-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: border-color 0.15s ease;
+}
+
+.gallery-widget-top {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.gallery-widget-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--card-white);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.gallery-widget-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.gallery-widget-title {
+  font-size: 14px;
+  font-weight: 850;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.gallery-widget-desc {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.gallery-widget-btn {
+  padding: 8px 12px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--border-medium);
+  background: var(--card-white);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.gallery-widget-btn.is-active {
+  background: rgba(56, 239, 125, 0.12);
+  color: #059669;
+  border-color: rgba(56, 239, 125, 0.3);
+  cursor: default;
+}
+
+.gallery-widget-btn:not(.is-active):hover {
+  background: var(--card-dark);
+  color: #FFFFFF;
+}
+
+/* =========================================
+   19. ستايلات الويدجتس المخصصة الجديدة
+   ========================================= */
+
+/* ويدجت مصفوفة تقدم الوقت الحية (Left Matrix) */
+.left-matrix-widget {
+  background: var(--card-dark-glass);
+  backdrop-filter: blur(32px) saturate(210%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%);
+  border: 1px solid var(--border-dark);
+  color: #FFFFFF;
+  border-radius: var(--radius-bento);
+  padding: clamp(14px, 3.5vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-dark);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.left-matrix-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+}
+
+.left-matrix-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  gap: 2px;
+  overflow-x: auto;
+  max-width: 100%;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  flex-shrink: 0;
+}
+
+.left-matrix-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.left-tab-btn {
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 11px;
+  font-weight: 750;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.left-tab-btn.active {
+  background: var(--card-yellow);
+  color: #121316;
+  font-weight: 850;
+}
+
+.left-matrix-display {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left-matrix-big-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.left-stat-number {
+  font-size: clamp(32px, 8vw, 44px);
+  font-weight: 900;
+  color: var(--card-yellow);
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.left-stat-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* شبكة الدوائر الحية للوقت (Left Circles Grid) */
+.left-dots-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-top: 4px;
+}
+
+.left-circle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background-color 0.2s ease;
+}
+
+.left-circle-dot.passed {
+  background: var(--card-yellow);
+}
+
+.left-circle-dot.current {
+  background: #38EF7D;
+  box-shadow: 0 0 6px #38EF7D;
+  animation: leftDotPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes leftDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+/* ويدجت قاعدة اليومين (Two-Day Rule) */
+.two-day-rule-card {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+}
+
+.two-day-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(239, 68, 68, 0.1);
+  color: #DC2626;
+  width: fit-content;
+}
+
+.two-day-safe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  width: fit-content;
+}
+
+/* ويدجت تراكم العادات (Habit Stacking Sequences) */
+.habit-stacking-widget {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+}
+
+.stack-chain-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--card-gray-subtle);
+  border-radius: 16px;
+  font-size: 12.5px;
+  font-weight: 750;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.stack-arrow {
+  color: #3B82F6;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* ويدجت الإحصائيات السريعة (Quick Stats Grid) */
+.quick-stats-widget {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .quick-stats-widget {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.quick-stat-tile {
+  background: var(--card-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  box-shadow: var(--shadow-bento);
+}
+
+.quick-stat-icon {
+  font-size: 20px;
+}
+
+.quick-stat-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.quick-stat-lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* ويدجت الاقتباس اليومي الملهم */
+.daily-quote-widget {
+  background: rgba(254, 243, 199, 0.7);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(253, 230, 138, 0.8);
+  border-radius: var(--radius-bento);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #78350F;
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .daily-quote-widget {
+  background: rgba(31, 29, 22, 0.75);
+  border-color: rgba(253, 230, 138, 0.25);
+  color: #FDE68A;
+}
+
+.quote-body-text {
+  font-size: 13.5px;
+  font-weight: 750;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.quote-author-text {
+  font-size: 11px;
+  font-weight: 700;
+  align-self: flex-end;
+  opacity: 0.8;
+}
+
+/* ويدجت سجل التأمل والملاحظات */
+.reflection-widget {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+}
+
+.mood-selector-row {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.mood-btn {
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  background: var(--card-gray-subtle);
+  font-size: 20px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.12s, border-color 0.15s;
+}
+
+.mood-btn:active {
+  transform: scale(0.9);
+}
+
+.mood-btn.active {
+  background: #FFFFFF;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 2px #3B82F6;
+}
+
+[data-theme="dark"] .mood-btn.active {
+  background: var(--card-dark-surface);
+}
+
+.reflection-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.reflection-text-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: var(--radius-button);
+  background: var(--card-gray-subtle);
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.reflection-text-input:focus {
+  background: #FFFFFF;
+  border-color: var(--card-dark);
+}
+
+[data-theme="dark"] .reflection-text-input:focus {
+  background: #1B1D23;
+  border-color: #FFFFFF;
+}
+
+/* ====================================================
+   20. ويدجتس الأبحاث الإنتاجية والسلوكية الجديدة
+   (Circadian, Habit Strength, Financial ROI, Audio, Velocity)
+   ==================================================== */
+
+/* 1. ويدجت منحنى الطاقة والساعة البيولوجية (Circadian Rhythm & Energy Waves) */
+.circadian-widget {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.85) 0%, rgba(49, 46, 129, 0.85) 50%, rgba(67, 56, 202, 0.85) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  color: #FFFFFF;
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(49, 46, 129, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.circadian-phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(253, 226, 138, 0.2);
+  color: #FDE28A;
+  border: 1px solid rgba(253, 226, 138, 0.3);
+}
+
+.circadian-wave-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 52px;
+  padding: 4px 0;
+  width: 100%;
+}
+
+.circadian-hour-bar {
+  flex: 1;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.22);
+  transition: all 0.2s ease;
+  min-height: 8px;
+}
+
+.circadian-hour-bar.is-current {
+  background: #38EF7D !important;
+  box-shadow: 0 0 10px #38EF7D;
+  transform: scaleY(1.08);
+}
+
+.circadian-recommendation {
+  font-size: 12.5px;
+  font-weight: 750;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+/* 2. ويدجت مؤشر قوة العادات والاستمرارية التراكمية (Habit Strength Index) */
+.habit-strength-widget {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.strength-item-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.strength-meta-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.strength-meter-track {
+  width: 100%;
+  height: 7px;
+  background: var(--card-gray-subtle);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.strength-meter-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, #3B82F6, #10B981);
+  transition: width 0.4s ease;
+}
+
+/* 3. ويدجت عداد التوفير المالي والصحي (Financial & Health Savings Ticker) */
+.savings-ticker-widget {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.88) 0%, rgba(4, 120, 87, 0.88) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: #FFFFFF;
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(6, 78, 59, 0.3);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.savings-amount-huge {
+  font-size: clamp(30px, 7.5vw, 42px);
+  font-weight: 900;
+  color: #34D399;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.savings-badges-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.savings-pill {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+/* 4. ويدجت مولد أصوات التركيز الهادئة (Ambient Focus Soundscapes) */
+.focus-audio-widget {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-glass);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.sound-presets-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.sound-preset-btn {
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--card-gray-subtle);
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.sound-preset-btn.active {
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border-color: var(--card-dark);
+}
+
+[data-theme="dark"] .sound-preset-btn.active {
+  background: #FFFFFF;
+  color: #121316;
+}
+
+.sound-play-toggle-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-button);
+  border: none;
+  background: var(--card-dark);
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.12s ease;
+  font-family: inherit;
+}
+
+[data-theme="dark"] .sound-play-toggle-btn {
+  background: #FFFFFF;
+  color: #121316;
+}
+
+.sound-play-toggle-btn:active {
+  transform: scale(0.96);
+}
+
+/* 5. ويدجت مقارنة النمو الأسبوعي والسرعة (Week-over-Week Momentum Velocity) */
+.momentum-velocity-widget {
+  background: var(--card-white);
+  border-radius: var(--radius-bento);
+  padding: clamp(16px, 3.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+  border: 1px solid var(--border-subtle);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.velocity-stats-compare {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--card-gray-subtle);
+  border-radius: 16px;
+}
+
+.velocity-growth-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 850;
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+/* ==========================================================================
+   19. ميزات مجتمع الإنتاجية العالمية (Community Power Features - Step 5)
+   - بنك تجميد السلاسل (Streak Freeze Bank)
+   - الأهداف الأسبوعية المرنة (Flexible Weekly Frequency)
+   - العادة المصغرة للأيام الشاقة (Show-Up Mini-Habit)
+   - نظام الرتب السلوكية ونقاط الخبرة (Gamified XP & Levels)
+   - مشغل سلاسل الروتين (Morning/Evening Routine Flow)
+   ========================================================================== */
+
+/* أزرار ومؤشرات بنك التجميد */
+.freeze-pill-btn {
+  background: #E0F2FE !important;
+  color: #0284C7 !important;
+  border-color: #BAE6FD !important;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+[data-theme="dark"] .freeze-pill-btn {
+  background: rgba(2, 132, 199, 0.18) !important;
+  color: #38BDF8 !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+}
+
+.freeze-pill-btn:active {
+  transform: scale(0.92);
+}
+
+.freeze-pill-btn.frozen-active {
+  background: #0284C7 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
+
+/* رتبة ومستوى الـ XP */
+.xp-level-pill {
+  background: #FEF3C7 !important;
+  color: #B45309 !important;
+  border-color: #FDE68A !important;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .xp-level-pill {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #FBBF24 !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+}
+
+/* شارة التكرار الأسبوعي المرن */
+.habit-weekly-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #8B5CF6;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  margin-top: 3px;
+  width: fit-content;
+}
+
+.habit-weekly-pill.target-met {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* زر العادة المصغرة للأيام الصعبة (Show-up Mini Habit) */
+.bento-mini-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid #A7F3D0;
+  background: #ECFDF5;
+  color: #065F46;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+  margin-inline-end: 6px;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .bento-mini-btn {
+  background: rgba(6, 95, 70, 0.25);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: #6EE7B7;
+}
+
+.bento-mini-btn:active {
+  transform: scale(0.92);
+}
+
+.bento-mini-btn.active {
+  background: #10B981;
+  color: #FFFFFF;
+  border-color: #10B981;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+}
+
+/* شريط تشغيل الروتين السريع */
+.routine-flow-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.routine-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-dark);
+  color: #FFFFFF;
+  border: none;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.12s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .routine-trigger-btn {
+  background: #FFFFFF;
+  color: #121316;
+}
+
+.routine-trigger-btn:active {
+  transform: scale(0.94);
+}
+
+/* نافذة مشغل الروتين (Routine Flow Modal) */
+.routine-modal-card {
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.routine-card-inner {
+  background: var(--card-gray-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 26px;
+  padding: 24px 18px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.routine-current-emoji {
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  background: var(--card-white);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.routine-current-title {
+  font-size: 20px;
+  font-weight: 850;
+  color: var(--text-primary);
+}
+
+.routine-progress-track {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin: 8px 0 16px 0;
+}
+
+[data-theme="dark"] .routine-progress-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.routine-progress-fill {
+  height: 100%;
+  background: #10B981;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   21. ميزة الخريطة السنوية والشبكة الحرارية لكل عادة (HabitKit Yearly Heatmap)
+   - شريط تبديل العرض (Single | Weekly | Yearly)
+   - بطاقات العادات مع مصفوفة الإنجاز التاريخية السنوية (Contribution Matrix Grid)
+   - أسماء الشهور الموزعة بدقة فوق أعمدة الأسابيع
+   - تخصيص ألوان النيون لكل عادة وأزرار الإجراء المباشر
+   ========================================================================== */
+
+/* شريط تبديل نمط عرض العادات (Single | Weekly | Yearly) */
+.habits-view-segmented {
+  display: inline-flex;
+  align-items: center;
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+  box-shadow: var(--shadow-sm);
+}
+
+.habits-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 750;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s var(--spring-smooth);
+  white-space: nowrap;
+}
+
+.habits-view-btn:hover {
+  color: var(--text-primary);
+}
+
+.habits-view-btn.active {
+  background: var(--card-dark);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+[data-theme="dark"] .habits-view-btn.active {
+  background: #FFFFFF;
+  color: #0E1015;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.25);
+}
+
+/* اختيار ألوان العادات في النافذة المنبثقة */
+.habit-color-picker {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.color-circle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+
+.color-circle-btn:active {
+  transform: scale(0.9);
+}
+
+.color-circle-btn.selected {
+  transform: scale(1.15);
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .color-circle-btn.selected {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* حاوية شبكة العادات السنوية متعددة الأعمدة لسطح المكتب والتابلت */
+#habitsContainer.view-yearly {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 680px) {
+  #habitsContainer.view-yearly {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   بطاقة العادة مع الخريطة الحرارية السنوية (Yearly Heatmap Card)
+   ========================================= */
+.habit-yearly-card {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: 26px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-bento);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.22s var(--spring-bounce);
+}
+
+.habit-yearly-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .habit-yearly-card {
+  background: var(--card-dark-glass);
+  border: 1px solid var(--border-dark);
+}
+
+[data-theme="dark"] .habit-yearly-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* رأس بطاقة العادة السنوية */
+.habit-yearly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.habit-yearly-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: opacity 0.15s ease;
+}
+
+.habit-yearly-left:active {
+  opacity: 0.75;
+}
+
+.habit-yearly-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background: var(--habit-glow-bg, rgba(59, 130, 246, 0.14));
+  border: 1px solid var(--habit-glow-border, rgba(59, 130, 246, 0.28));
+  box-shadow: 0 4px 12px var(--habit-glow-shadow, rgba(59, 130, 246, 0.22));
+}
+
+.habit-yearly-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.habit-yearly-title {
+  font-size: clamp(14px, 3.6vw, 15.5px);
+  font-weight: 850;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.habit-yearly-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.habit-yearly-streak {
+  font-size: 11.5px;
+  font-weight: 750;
+  color: #F59E0B;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.habit-yearly-total-days {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+
+/* زر التفاعل المباشر على يسار البطاقة */
+.habit-yearly-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 850;
+  border: 1px solid transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s var(--spring-bounce);
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: var(--habit-color, #3B82F6);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px var(--habit-glow-shadow, rgba(59, 130, 246, 0.35));
+}
+
+.habit-yearly-action-btn:active {
+  transform: scale(0.90);
+}
+
+.habit-yearly-action-btn.is-check-btn {
+  width: 38px;
+  height: 36px;
+  padding: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  box-shadow: none;
+}
+
+.habit-yearly-action-btn.is-check-btn.completed {
+  background: var(--habit-color, #10B981);
+  color: #FFFFFF;
+  border-color: var(--habit-color, #10B981);
+  box-shadow: 0 4px 14px var(--habit-glow-shadow, rgba(16, 185, 129, 0.4));
+}
+
+/* حاوية الخريطة الحرارية المتناسقة (Chronological Timeline LTR) */
+.habit-heatmap-container {
+  direction: ltr !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  box-sizing: border-box;
+}
+
+/* شريط أسماء الشهور فوق أعمدة الأسابيع بمحاذاة CSS Grid دقيقة */
+.habit-heatmap-months-row {
+  display: grid;
+  grid-template-columns: repeat(26, minmax(0, 1fr));
+  width: 100%;
+  height: 16px;
+  align-items: center;
+  user-select: none;
+  overflow: hidden;
+}
+
+.habit-heatmap-month-label {
+  font-size: 10px;
+  font-weight: 750;
+  color: var(--text-tertiary);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+/* شبكة الإنجاز الحراري (26 عموداً × 7 صفوف متمددة بنقاء لتملأ عرض البطاقة) */
+.habit-heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(26, minmax(0, 1fr));
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+  grid-auto-flow: column;
+  gap: 3.5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* بلاطة اليوم في الخريطة الحرارية */
+.habit-heatmap-tile {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 2.5px;
+  background: rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  min-height: 8px;
+}
+
+[data-theme="dark"] .habit-heatmap-tile {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.habit-heatmap-tile:hover {
+  transform: scale(1.4);
+  z-index: 5;
+}
+
+.habit-heatmap-tile.is-active {
+  background: var(--habit-color, #3B82F6);
+  box-shadow: 0 0 5px var(--habit-glow-shadow, rgba(59, 130, 246, 0.35));
+}
+
+.habit-heatmap-tile.is-milestone {
+  background: #F59E0B !important;
+  box-shadow: 0 0 7px rgba(245, 158, 11, 0.6) !important;
+}
+
+.habit-heatmap-tile.is-today {
+  box-shadow: 0 0 0 1.5px var(--habit-color, #3B82F6) !important;
+}
+
+/* =========================================
+   بطاقة العرض الأسبوعي (Weekly View Card)
+   ========================================= */
+.habit-weekly-card {
+  background: var(--card-white);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: clamp(14px, 3.5vw, 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-bento);
+}
+
+[data-theme="dark"] .habit-weekly-card {
+  background: var(--card-dark-glass);
+  border-color: var(--border-dark);
+}
+
+.habit-weekly-days-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.habit-weekly-day-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  background: var(--card-gray-subtle);
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.18s var(--spring-bounce);
+}
+
+.habit-weekly-day-pill:active {
+  transform: scale(0.92);
+}
+
+.habit-weekly-day-pill.completed {
+  background: var(--habit-glow-bg, rgba(59, 130, 246, 0.15));
+  border-color: var(--habit-color, #3B82F6);
+}
+
+.habit-weekly-day-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+}
+
+.habit-weekly-day-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .habit-weekly-day-dot {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.habit-weekly-day-pill.completed .habit-weekly-day-dot {
+  background: var(--habit-color, #3B82F6);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   أنماط المصادقة وإدارة الحسابات المتعددة (Apple Liquid Glass Auth Architecture)
+   ========================================================================== */
+.auth-segmented-switch {
+  display: flex;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-glass);
+}
+
+[data-theme="dark"] .auth-segmented-switch {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-avatar-grid {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.auth-avatar-grid::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.auth-avatar-chip {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--card-gray-subtle);
+  border: 1.5px solid var(--border-glass);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  touch-action: manipulation;
+  transition: all 0.18s var(--spring-bounce);
+}
+
+.auth-avatar-chip:hover {
+  transform: scale(1.08);
+  border-color: var(--ios-blue);
+}
+
+.auth-avatar-chip.active {
+  background: var(--card-white);
+  border-color: var(--ios-blue);
+  box-shadow: 0 4px 14px rgba(10, 132, 255, 0.35);
+  transform: scale(1.1);
+}
+
+/* بطاقات الحسابات السابقة للتبديل السريع */
+.auth-quick-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--card-gray-subtle);
+  border: 1px solid var(--border-glass);
+  border-radius: 18px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s var(--spring-smooth);
+}
+
+.auth-quick-profile-card:hover {
+  background: var(--card-white);
+  border-color: var(--ios-blue);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--card-white);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.auth-profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.auth-profile-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-profile-sub {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.auth-profile-del-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(239, 68, 68, 0.1);
+  color: #DC2626;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.auth-profile-del-btn:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+/* أزرار إدارة وحذف العادة في النافذة المنبثقة */
+.habit-modal-actions-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.habit-modal-reset-btn {
+  padding: 13px 18px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--border-medium);
+  background: var(--card-gray-subtle);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.18s ease;
+}
+
+.habit-modal-reset-btn:hover {
+  background: var(--card-white);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.habit-modal-delete-btn {
+  padding: 13px 18px;
+  border-radius: var(--radius-button);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
+  color: #DC2626;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.18s ease;
+}
+
+.habit-modal-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
+.settings-account-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+

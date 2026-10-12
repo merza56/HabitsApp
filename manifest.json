@@ -1,0 +1,40 @@
+{
+  "id": "/habits-app-pwa",
+  "name": "عاداتي برو | Bento Habits & Flow Pro",
+  "short_name": "عاداتي",
+  "description": "منصة بينتو مفتوحة المصدر لتتبع العادات والإنتاجية الشخصية والتركيز الذهني بتصميم أبل الحديث وبدون خوادم خارجية (Local-First Open-Source PWA).",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#F4F6FA",
+  "theme_color": "#F4F6FA",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["productivity", "lifestyle", "utilities"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "إضافة عادة جديدة",
+      "short_name": "إضافة",
+      "description": "فتح نافذة إضافة عادة جديدة بسرعة",
+      "url": "./index.html?action=add",
+      "icons": [{ "src": "icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "لوحة اليوم",
+      "short_name": "اليوم",
+      "description": "الذهاب مباشرة إلى لوحة البينتو الحرة لليوم",
+      "url": "./index.html?panel=panelToday",
+      "icons": [{ "src": "icon.svg", "sizes": "any" }]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Habits App - Apple iOS 27 Liquid Glass Design System
+   Peak Apple VisionOS & iOS 27 Material Architecture
+   - Ultra-Refined Liquid Glassmorphism (32px blur + 210% saturation)
+   - Dual-Mode Specular Highlights & Layered Ambient Elevation
+   - Continuous Squircle Ergonomics (Apple HIG 2026/2027)
+   - Flawless Dynamic Contrast for Light & Dark Modes
+   ========================================================================== */
+
+:root {
+  /* =========================================
+     1. لوحة ألوان السائل الزجاجي (Liquid Glass Palette - Light)
+     ========================================= */
+  --bg-canvas: #EBF0F7;
+  --device-bg: #F4F6FA;
+
+  /* Atmospheric Ambient Mesh */
+  --canvas-mesh: 
+    radial-gradient(at 0% 0%, rgba(200, 242, 238, 0.45) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, rgba(253, 226, 138, 0.40) 0px, transparent 55%),
+    radial-gradient(at 50% 100%, rgba(224, 231, 255, 0.45) 0px, transparent 55%),
+    #F4F6FA;
+
+  /* Liquid Glass Surfaces (Light Mode) */
+  --card-white: rgba(255, 255, 255, 0.82);
+  --card-white-solid: #FFFFFF;
+  --card-gray-subtle: rgba(246, 248, 252, 0.75);
+  --card-glass-specular: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95);
+  
+  /* Signature Pastel & Vibrant Accent Cards */
+  --card-yellow: #FDE28A;
+  --card-yellow-glass: rgba(253, 226, 138, 0.88);
+  --card-yellow-glow: rgba(253, 226, 138, 0.50);
+  --card-yellow-text: #1C1917;
+
+  --card-mint: #C8F2EE;
+  --card-mint-glass: rgba(200, 242, 238, 0.88);
+  --card-mint-glow: rgba(200, 242, 238, 0.50);
+  --card-mint-text: #064E3B;
+
+  --card-dark: #121316;
+  --card-dark-surface: #1E2026;
+  --card-dark-glass: rgba(18, 19, 22, 0.88);
+
+  /* Apple iOS 27 System Accents */
+  --ios-blue: #007AFF;
+  --ios-mint: #00C7BE;
+  --ios-green: #34C759;
+  --ios-orange: #FF9500;
+  --ios-indigo: #5856D6;
+  --ios-pink: #FF2D55;
+  --ios-purple: #AF52DE;
+
+  /* =========================================
+     2. الطبقات المجهرية والحدود المنعكسة (Specular Micro-Borders)
+     ========================================= */
+  --border-glass: rgba(255, 255, 255, 0.80);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.11);
+  --border-dark: rgba(255, 255, 255, 0.16);
+
+  /* =========================================
+     3. نظام الظلال المحيطية والعمق البصري (Ambient Glass Shadows)
+     ========================================= */
+  --shadow-bento: 
+    0 1px 3px rgba(0, 0, 0, 0.02),
+    0 8px 24px -4px rgba(15, 23, 42, 0.04),
+    0 20px 48px -10px rgba(15, 23, 42, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+
+  --shadow-card-hover: 
+    0 2px 6px rgba(0, 0, 0, 0.03),
+    0 14px 34px -4px rgba(15, 23, 42, 0.08),
+    0 28px 60px -12px rgba(15, 23, 42, 0.10),
+    inset 0 1px 1.5px rgba(255, 255, 255, 1);
+
+  --shadow-dock: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.25),
+    0 25px 60px -12px rgba(0, 0, 0, 0.50),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.28);
+
+  --shadow-toast:
+    0 12px 36px -6px rgba(0, 0, 0, 0.35),
+    0 4px 14px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+
+  /* =========================================
+     4. تدرج التايبوجرافي الدقيق (SF Pro Typography)
+     ========================================= */
+  --text-primary: #0A0C10;
+  --text-secondary: #4B5565;
+  --text-tertiary: #8893A4;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-subtle: rgba(255, 255, 255, 0.70);
+
+  /* ألوان الأولويات والوسوم */
+  --priority-high-bg: rgba(239, 68, 68, 0.12);
+  --priority-high-text: #DC2626;
+  --priority-med-bg: rgba(245, 158, 11, 0.12);
+  --priority-med-text: #D97706;
+  --priority-low-bg: rgba(59, 130, 246, 0.12);
+  --priority-low-text: #2563EB;
+
+  /* =========================================
+     5. الأبعاد والاستدارة الهندسية (Apple Squircle Radii)
+     ========================================= */
+  --radius-bento: 30px;
+  --radius-inner: 22px;
+  --radius-button: 18px;
+  --radius-pill: 9999px;
+  --touch-target-min: 44px;
+
+  /* =========================================
+     6. فيزياء الحركة الارتدادية والزجاج (Liquid Physics)
+     ========================================= */
+  --spring-smooth: cubic-bezier(0.2, 0.9, 0.3, 1.0);
+  --spring-bounce: cubic-bezier(0.18, 1.25, 0.3, 1.0);
+  --glass-blur: blur(28px) saturate(210%);
+  --glass-blur-heavy: blur(36px) saturate(220%);
+
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Arabic", "PingFang SC", system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   الوضع الداكن الخارق (Apple iOS 27 OLED Space Titanium Dark Mode)
+   تباين OLED مثالي، زجاج تيتانيوم كربوني، وانعكاسات ضوئية حية
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg-canvas: #050608;
+  --device-bg: #0A0B0E;
+
+  /* Ethereal OLED Nebula Mesh */
+  --canvas-mesh: 
+    radial-gradient(at 0% 0%, rgba(0, 199, 190, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 149, 0, 0.10) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(88, 86, 214, 0.12) 0px, transparent 50%),
+    #090A0D;
+
+  /* Translucent Titanium Glass Surfaces */
+  --card-white: rgba(22, 24, 30, 0.74);
+  --card-white-solid: #16181E;
+  --card-gray-subtle: rgba(26, 29, 36, 0.65);
+  --card-glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+
+  /* Deep Luminous Accents */
+  --card-yellow: #262012;
+  --card-yellow-glass: rgba(42, 34, 18, 0.82);
+  --card-yellow-glow: rgba(253, 226, 138, 0.16);
+  --card-yellow-text: #FDE28A;
+
+  --card-mint: #0E201E;
+  --card-mint-glass: rgba(14, 32, 30, 0.82);
+  --card-mint-glow: rgba(200, 242, 238, 0.16);
+  --card-mint-text: #63E6E2;
+
+  --card-dark: #1E2129;
+  --card-dark-surface: #262A34;
+  --card-dark-glass: rgba(30, 33, 42, 0.85);
+
+  /* Dynamic Specular Borders */
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-dark: rgba(255, 255, 255, 0.20);
+
+  /* Deep Contrast Typography */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+
+  /* Glowing Elevation in Dark */
+  --shadow-bento: 
+    0 1px 3px rgba(0, 0, 0, 0.40),
+    0 12px 32px -4px rgba(0, 0, 0, 0.60),
+    0 24px 56px -12px rgba(0, 0, 0, 0.80),
+    inset 0 1px 1px rgba(255, 255, 255, 0.14);
+
+  --shadow-card-hover: 
+    0 2px 6px rgba(0, 0, 0, 0.50),
+    0 18px 40px -4px rgba(0, 0, 0, 0.70),
+    0 32px 70px -14px rgba(0, 0, 0, 0.90),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.20);
+
+  /* Vibrant Apple Accents for Dark Mode */
+  --ios-blue: #0A84FF;
+  --ios-mint: #63E6E2;
+  --ios-green: #30D158;
+  --ios-orange: #FF9F0A;
+  --ios-indigo: #5E5CE6;
+  --ios-pink: #FF375F;
+  --ios-purple: #BF5AF2;
+
+  --priority-high-bg: rgba(239, 68, 68, 0.22);
+  --priority-high-text: #FCA5A5;
+  --priority-med-bg: rgba(245, 158, 11, 0.22);
+  --priority-med-text: #FCD34D;
+  --priority-low-bg: rgba(59, 130, 246, 0.22);
+  --priority-low-text: #93C5FD;
+}

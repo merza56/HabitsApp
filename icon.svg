@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824" />
+      <stop offset="50%" stop-color="#0B0D14" />
+      <stop offset="100%" stop-color="#05060A" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradients -->
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38EF7D" />
+      <stop offset="100%" stop-color="#11998E" />
+    </linearGradient>
+    <linearGradient id="orangeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B" />
+      <stop offset="100%" stop-color="#FF8E53" />
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C0FF" />
+      <stop offset="100%" stop-color="#4285F4" />
+    </linearGradient>
+    <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C471ED" />
+      <stop offset="100%" stop-color="#F64F59" />
+    </linearGradient>
+
+    <!-- Frosted Glass Filter -->
+    <filter id="glowBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Inner Border Shimmer -->
+    <linearGradient id="borderShimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.25)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.03)" />
+    </linearGradient>
+  </defs>
+
+  <!-- iOS Squircle Base Background -->
+  <rect x="16" y="16" width="480" height="480" rx="108" ry="108" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="480" height="480" rx="108" ry="108" fill="none" stroke="url(#borderShimmer)" stroke-width="3" />
+
+  <!-- Ambient Light Reflection -->
+  <ellipse cx="256" cy="110" rx="190" ry="85" fill="rgba(255,255,255,0.04)" />
+
+  <!-- 3x3 Dots Matrix Representing Habit Streaks (Inspired by Left) -->
+  <!-- Row 1 -->
+  <circle cx="160" cy="165" r="26" fill="url(#cyanGlow)" filter="url(#glowBlur)" />
+  <circle cx="256" cy="165" r="26" fill="url(#cyanGlow)" filter="url(#glowBlur)" />
+  <circle cx="352" cy="165" r="26" fill="url(#cyanGlow)" filter="url(#glowBlur)" />
+
+  <!-- Row 2 -->
+  <circle cx="160" cy="256" r="26" fill="url(#blueGlow)" filter="url(#glowBlur)" />
+  <circle cx="256" cy="256" r="26" fill="url(#blueGlow)" filter="url(#glowBlur)" />
+  <circle cx="352" cy="256" r="26" fill="url(#orangeGlow)" filter="url(#glowBlur)" />
+
+  <!-- Row 3 -->
+  <circle cx="160" cy="347" r="26" fill="url(#purpleGlow)" filter="url(#glowBlur)" />
+  <circle cx="256" cy="347" r="26" fill="url(#purpleGlow)" filter="url(#glowBlur)" />
+  <!-- Incomplete / Upcoming dot (Faint translucent) -->
+  <circle cx="352" cy="347" r="26" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+</svg>
