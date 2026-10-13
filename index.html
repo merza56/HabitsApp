@@ -5,7 +5,7 @@
   <title>عاداتي | Bento Habits & Flow Pro</title>
 
   <!-- iOS PWA Fullscreen & Viewport Meta Tags -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -21,6 +21,7 @@
   <link rel="manifest" href="manifest.json">
 
   <!-- Modular Stylesheets (Bento Editorial Pro) -->
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
@@ -62,10 +63,10 @@
   <canvas id="celebrationCanvas" style="position:fixed; inset:0; pointer-events:none; z-index:999;"></canvas>
 
   <!-- Bento Toast & Undo Notification -->
-  <div id="toastNotification" class="bento-toast">
-    <span id="toastMessage">تم التحديث بنجاح</span>
-    <button id="toastUndoBtn" class="toast-undo-btn">تراجع ↺</button>
-  </div>
+<div id="toastNotification" class="bento-toast">
+  <span id="toastMessage">تم التحديث بنجاح</span>
+  <button id="toastUndoBtn" class="toast-undo-btn">تراجع ↺</button>
+</div>
 
   <div class="bento-app-container">
     
@@ -90,6 +91,13 @@
       </nav>
 
       <div class="top-bar-actions">
+<button id="openCommandPaletteBtn" class="icon-btn-circle" title="لوحة الأوامر السريعة (Cmd+K)" aria-label="لوحة الأوامر السريعة">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</button>
+
         <a href="tools.html" class="icon-btn-circle" id="toolsHeaderBtn" aria-label="الأدوات والإنتاجية" title="أدوات تعزيز الإنتاجية والعادات (15 أداة)" style="text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:center;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
@@ -150,6 +158,10 @@
             <span id="canvasModeLabel">لوحة البينتو الحرة</span>
           </div>
           <div class="canvas-actions-row">
+<button type="button" id="zenModeToggleBtn" class="canvas-btn" title="وضع التركيز الهادئ (Zen Mode)">
+  <span>🧘‍♂️</span> زن
+</button>
+
             <button type="button" id="openWidgetGalleryBtn" class="canvas-btn primary" title="إضافة ويدجت جديد">
               <span>+</span> ويدجت
             </button>
@@ -172,10 +184,10 @@
               <div class="widget-badge-title"><span>👤</span> الملف التعريفي والتحية</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="hero_profile">S</button>
-                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="hero_profile">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="hero_profile">L</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="full" data-widget-id="hero_profile">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="hero_profile">صغير</button>
+                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="hero_profile">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="hero_profile">عريض</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="full" data-widget-id="hero_profile">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="hero_profile">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="hero_profile">✕</button>
@@ -183,7 +195,7 @@
             </div>
             <div class="bento-hero-card">
               <span class="hero-subtitle">الإحصائيات والزخم</span>
-              <h1 class="hero-editorial-title">
+              <h1 class="hero-editorial-title" id="heroEditorialTitle">
                 أهلاً 👋 عبدالله! <span class="inline-avatar">👤</span> تقييمك العام <span style="font-weight:900;">يتجاوز المتوسط</span>.
               </h1>
               <div class="hero-pill-row">
@@ -221,10 +233,10 @@
               <div class="widget-badge-title"><span>📈</span> نسبة الإنجاز اليومي</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="progress_yellow">S</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="progress_yellow">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="progress_yellow">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="progress_yellow">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="progress_yellow">صغير</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="progress_yellow">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="progress_yellow">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="progress_yellow">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="progress_yellow">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="progress_yellow">✕</button>
@@ -256,10 +268,10 @@
               <div class="widget-badge-title"><span>🛡️</span> درع حماية السلسلة</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="grace_shield">S</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="grace_shield">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="grace_shield">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="grace_shield">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="grace_shield">صغير</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="grace_shield">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="grace_shield">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="grace_shield">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="grace_shield">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="grace_shield">✕</button>
@@ -286,13 +298,13 @@
           <article class="bento-widget-card size-md span-1" data-widget-id="left_matrix">
             <div class="widget-header-toolbar">
               <div class="widget-drag-handle" title="اسحب لتحريك الويدجت">⋮⋮</div>
-              <div class="widget-badge-title"><span>⏳</span> مصفوفة الوقت (Left)</div>
+              <div class="widget-badge-title"><span>⏳</span> مصفوفة الوقت المتبقي</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="left_matrix">S</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="left_matrix">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="left_matrix">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="left_matrix">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="left_matrix">صغير</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="left_matrix">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="left_matrix">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="left_matrix">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="left_matrix">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="left_matrix">✕</button>
@@ -301,7 +313,7 @@
             <div class="left-matrix-widget">
               <div class="left-matrix-header">
                 <div>
-                  <span style="font-size:11.5px; font-weight:700; color:rgba(255,255,255,0.6); text-transform:uppercase;">أداة الوقت المتبقي (Left)</span>
+                  <span style="font-size:11.5px; font-weight:700; color:rgba(255,255,255,0.6); text-transform:uppercase;">أداة الوقت المتبقي</span>
                   <h3 style="font-size:18px; font-weight:850; margin-top:2px;">مصفوفة الوقت المنقضي</h3>
                 </div>
                 <div class="left-matrix-tabs" id="leftMatrixUnitTabs">
@@ -325,10 +337,10 @@
               <div class="widget-badge-title"><span>📅</span> التقويم وفلاتر العادات</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="calendar_controls">S</button>
-                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="calendar_controls">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="calendar_controls">L</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="full" data-widget-id="calendar_controls">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="calendar_controls">صغير</button>
+                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="calendar_controls">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="calendar_controls">عريض</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="full" data-widget-id="calendar_controls">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="calendar_controls">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="calendar_controls">✕</button>
@@ -360,10 +372,10 @@
               <div class="widget-badge-title"><span>⚡</span> تدفق العادات اليومية</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="habits_stream">S</button>
-                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="habits_stream">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="habits_stream">L</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="full" data-widget-id="habits_stream">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="habits_stream">صغير</button>
+                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="habits_stream">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="habits_stream">عريض</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="full" data-widget-id="habits_stream">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="habits_stream">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="habits_stream">✕</button>
@@ -379,15 +391,15 @@
                 <div class="habits-view-segmented" id="habitsViewSegmented">
                   <button type="button" class="habits-view-btn" data-habits-view="single" title="عرض يومي فردي">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
-                    <span>Single</span>
+                    <span>يومي</span>
                   </button>
                   <button type="button" class="habits-view-btn" data-habits-view="weekly" title="عرض أسبوعي">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="4"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    <span>Weekly</span>
+                    <span>أسبوعي</span>
                   </button>
-                  <button type="button" class="habits-view-btn active" data-habits-view="yearly" title="عرض سنوي حراري (Yearly Heatmap)">
+                  <button type="button" class="habits-view-btn active" data-habits-view="yearly" title="عرض سنوي حراري">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-                    <span>Yearly</span>
+                    <span>سنوي</span>
                   </button>
                 </div>
                 <div class="tasks-header-actions">
@@ -408,6 +420,10 @@
                 <button type="button" class="routine-trigger-btn" id="startEveningRoutineBtn">
                   <span>🌙</span> روتين المساء
                 </button>
+              
+<button type="button" class="routine-trigger-btn" id="batchRoutineCompleteBtn" title="إنجاز جميع عادات الروتين الحالي دفعة واحدة بضغطة واحدة">
+  <span>⚡</span> إنجاز الكل
+</button>
               </div>
               <div id="habitsContainer" style="display:flex; flex-direction:column; gap:10px; margin-top:8px;"></div>
             </div>
@@ -421,10 +437,10 @@
               <div class="widget-badge-title"><span>🔄</span> قاعدة اليومين</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="two_day_rule">S</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="two_day_rule">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="two_day_rule">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="two_day_rule">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="two_day_rule">صغير</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="two_day_rule">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="two_day_rule">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="two_day_rule">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="two_day_rule">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="two_day_rule">✕</button>
@@ -441,10 +457,10 @@
               <div class="widget-badge-title"><span>🔗</span> تراكم العادات</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="habit_stacking">S</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="habit_stacking">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="habit_stacking">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="habit_stacking">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="habit_stacking">صغير</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="habit_stacking">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="habit_stacking">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="habit_stacking">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="habit_stacking">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="habit_stacking">✕</button>
@@ -461,10 +477,10 @@
               <div class="widget-badge-title"><span>📌</span> الإحصائيات السريعة</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="quick_stats">S</button>
-                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="quick_stats">M</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="lg" data-widget-id="quick_stats">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="quick_stats">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="quick_stats">صغير</button>
+                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="quick_stats">وسط</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="lg" data-widget-id="quick_stats">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="quick_stats">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="quick_stats">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="quick_stats">✕</button>
@@ -481,10 +497,10 @@
               <div class="widget-badge-title"><span>💬</span> اقتباس اليوم</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="daily_quote">S</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="daily_quote">M</button>
-                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="daily_quote">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="daily_quote">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="daily_quote">صغير</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="md" data-widget-id="daily_quote">وسط</button>
+                  <button type="button" class="size-pill-btn" data-set-size="lg" data-widget-id="daily_quote">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="daily_quote">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="daily_quote">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="daily_quote">✕</button>
@@ -508,10 +524,10 @@
               <div class="widget-badge-title"><span>✍️</span> سجل التأمل اليومي</div>
               <div class="widget-actions-cluster">
                 <div class="widget-size-switcher" title="تغيير القياس">
-                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="daily_reflection">S</button>
-                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="daily_reflection">M</button>
-                  <button type="button" class="size-pill-btn active" data-set-size="lg" data-widget-id="daily_reflection">L</button>
-                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="daily_reflection">Full</button>
+                  <button type="button" class="size-pill-btn" data-set-size="sm" data-widget-id="daily_reflection">صغير</button>
+                  <button type="button" class="size-pill-btn" data-set-size="md" data-widget-id="daily_reflection">وسط</button>
+                  <button type="button" class="size-pill-btn active" data-set-size="lg" data-widget-id="daily_reflection">عريض</button>
+                  <button type="button" class="size-pill-btn" data-set-size="full" data-widget-id="daily_reflection">كامل</button>
                 </div>
                 <button type="button" class="widget-tool-btn widget-cycle-size-btn" title="تبديل القياس دورياً (📐)" data-cycle-id="daily_reflection">📐</button>
                 <button type="button" class="widget-tool-btn widget-remove-btn" title="إخفاء من اللوحة" data-remove-id="daily_reflection">✕</button>
@@ -589,7 +605,7 @@
             <span class="pill-stat-btn" id="annualActiveDaysPill">0/365 يوماً</span>
           </div>
           <p style="font-size:13px; color:var(--text-secondary); margin-top:-4px;">
-            تتبع مسار التزامك على مدار 52 أسبوعاً في السنة كما في Left و GitHub.
+            تتبع مسار التزامك على مدار 52 أسبوعاً في السنة بدقة بصرية متكاملة.
           </p>
           <div class="annual-matrix-scroll-wrapper">
             <div class="annual-matrix-grid" id="annualMatrixGrid">
@@ -823,148 +839,177 @@
         </div>
 
         <form id="habitForm" style="display:flex; flex-direction:column; gap:16px;">
-          <input type="hidden" id="editHabitId" value="">
-          
-          <div>
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">اسم العادة</label>
-            <input type="text" id="habitNameInput" class="bento-form-input" placeholder="مثال: قراءة كتاب، شرب ماء، تمرين..." required autocomplete="off">
-          </div>
+  <input type="hidden" id="editHabitId" value="">
 
-          <!-- Habit Nature: Build Habit vs Quit Habit -->
-          <div>
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">طبيعة العادة</label>
-            <div class="bento-segmented-toggle" style="background:#F3F4F6; padding:4px;">
-              <button type="button" class="segmented-option active" data-nature="positive" id="naturePositiveBtn">بناء عادة إيجابية 🌟</button>
-              <button type="button" class="segmented-option" data-nature="quit" id="natureQuitBtn">إقلاع عن عادة سلبية 🚭</button>
-            </div>
-          </div>
+  <!-- Quick Starter Templates Strip (<30s creation) -->
+  <div id="habitQuickTemplatesSection">
+    <label style="font-size:12.5px; font-weight:750; color:var(--text-secondary); margin-bottom:6px; display:block;">⚡ قوالب سريعة شائعة (انقر للتعبئة الفورية في ثوانٍ):</label>
+    <div class="habit-quick-templates-strip" id="habitModalTemplatesStrip" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;">
+      <button type="button" class="quick-template-pill" data-name="شرب الماء بانتظام" data-emoji="💧" data-type="counter" data-target="8" data-unit="كوب" data-category="health">💧 شرب 8 أكواب ماء</button>
+      <button type="button" class="quick-template-pill" data-name="قراءة كتاب مفيد" data-emoji="📖" data-type="timer" data-target="15" data-unit="دقيقة" data-category="mind">📖 قراءة 15 دقيقة</button>
+      <button type="button" class="quick-template-pill" data-name="مشي وتمارين رياضية" data-emoji="🏃‍♂️" data-type="timer" data-target="30" data-unit="دقيقة" data-category="fitness">🏃‍♂️ رياضة 30 د</button>
+      <button type="button" class="quick-template-pill" data-name="أذكار واستغفار" data-emoji="✨" data-type="check" data-target="1" data-unit="مرة" data-category="spirit">✨ أذكار واستغفار</button>
+      <button type="button" class="quick-template-pill" data-name="جلسة تركيز عميق" data-emoji="💻" data-type="timer" data-target="45" data-unit="دقيقة" data-category="work">💻 عمل عميق 45 د</button>
+      <button type="button" class="quick-template-pill" data-name="نوم مبكر واسترخاء" data-emoji="🌙" data-type="check" data-target="1" data-unit="مرة" data-category="health">🌙 نوم قبل 11:30</button>
+    </div>
+  </div>
+  
+  <!-- Primary Essential 1: Habit Name -->
+  <div>
+    <label style="font-size:13px; font-weight:750; color:var(--text-primary); margin-bottom:6px; display:block;">اسم العادة <span style="color:#EF4444;">*</span></label>
+    <input type="text" id="habitNameInput" class="bento-form-input" placeholder="مثال: قراءة كتاب، شرب ماء، تمرين رياضي..." required autocomplete="off" style="font-size:14.5px; font-weight:600;">
+  </div>
 
-          <!-- Habit Type Selector (For positive habits) -->
-          <div id="positiveTypeGroup">
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">آلية التتبع</label>
-            <div class="bento-segmented-toggle" style="background:#F3F4F6; padding:4px;">
-              <button type="button" class="segmented-option active" data-type="check" id="typeCheckBtn">صح نعم/لا ✅</button>
-              <button type="button" class="segmented-option" data-type="counter" id="typeCounterBtn">عداد وكمية 🔢</button>
-              <button type="button" class="segmented-option" data-type="timer" id="typeTimerBtn">مؤقت تركيز ⏱️</button>
-            </div>
-          </div>
+  <!-- Primary Essential 2: Tracking Type Selector -->
+  <div id="positiveTypeGroup">
+    <label style="font-size:13px; font-weight:750; color:var(--text-primary); margin-bottom:6px; display:block;">آلية التتبع</label>
+    <div class="bento-segmented-toggle" style="background:var(--card-gray-subtle); padding:4px; border:1px solid var(--border-glass);">
+      <button type="button" class="segmented-option active" data-type="check" id="typeCheckBtn">صح نعم/لا ✅</button>
+      <button type="button" class="segmented-option" data-type="counter" id="typeCounterBtn">عداد وكمية 🔢</button>
+      <button type="button" class="segmented-option" data-type="timer" id="typeTimerBtn">مؤقت تركيز ⏱️</button>
+    </div>
+  </div>
 
-          <!-- Target Input for Counter or Timer -->
-          <div id="targetInputGroup" style="display:none; flex-direction:column; gap:8px;">
-            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px;">
-              <div>
-                <label id="targetLabel" style="font-size:12px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">الهدف</label>
-                <input type="number" id="habitTargetInput" class="bento-form-input" value="8" min="1" max="100000" style="padding:10px 12px;">
-              </div>
-              <div>
-                <label style="font-size:12px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">الوحدة</label>
-                <input type="text" id="habitUnitInput" class="bento-form-input" placeholder="كوب، صفحة..." value="كوب" style="padding:10px 12px;">
-              </div>
-              <div>
-                <label style="font-size:12px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">الخطوة (+/-)</label>
-                <input type="number" id="habitStepInput" class="bento-form-input" value="1" min="1" max="1000" style="padding:10px 12px;">
-              </div>
-            </div>
-          </div>
+  <!-- Primary Essential 3: Target Input for Counter or Timer (Only visible when needed) -->
+  <div id="targetInputGroup" style="display:none; flex-direction:column; gap:8px; background:var(--card-gray-subtle); padding:12px; border-radius:16px; border:1px solid var(--border-glass);">
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px;">
+      <div>
+        <label id="targetLabel" style="font-size:12px; font-weight:750; color:var(--text-secondary); margin-bottom:4px; display:block;">الهدف المستهدف</label>
+        <input type="number" id="habitTargetInput" class="bento-form-input" value="8" min="1" max="100000" style="padding:10px 12px; font-weight:700; text-align:center;">
+      </div>
+      <div>
+        <label style="font-size:12px; font-weight:750; color:var(--text-secondary); margin-bottom:4px; display:block;">الوحدة</label>
+        <input type="text" id="habitUnitInput" class="bento-form-input" placeholder="كوب، صفحة..." value="كوب" style="padding:10px 12px; text-align:center;">
+      </div>
+      <div>
+        <label style="font-size:12px; font-weight:750; color:var(--text-secondary); margin-bottom:4px; display:block;">الخطوة (+/-)</label>
+        <input type="number" id="habitStepInput" class="bento-form-input" value="1" min="1" max="1000" style="padding:10px 12px; text-align:center;">
+      </div>
+    </div>
+  </div>
 
-          <!-- Time of Day Preference -->
-          <div id="timeOfDayGroup">
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">فترة اليوم المفضلة</label>
-            <div class="time-of-day-bar" id="modalTimeSelector" style="padding-bottom:2px;">
-              <button type="button" class="time-segment-pill active" data-modal-time="all">طوال اليوم</button>
-              <button type="button" class="time-segment-pill" data-modal-time="morning">صباح 🌅</button>
-              <button type="button" class="time-segment-pill" data-modal-time="afternoon">ظهيرة ☀️</button>
-              <button type="button" class="time-segment-pill" data-modal-time="evening">مساء 🌙</button>
-            </div>
-          </div>
+  <!-- Collapsible Advanced Settings Accordion -->
+  <details class="bento-advanced-accordion" id="habitAdvancedAccordion" style="background:var(--card-gray-subtle); border-radius:16px; border:1px solid var(--border-glass); padding:10px 14px;">
+    <summary style="font-size:13px; font-weight:800; color:var(--ios-blue); cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+      <span>⚙️ خيارات إضافية ومتقدمة (فترة اليوم، التصنيف، التكرار، الأيقونة)</span>
+      <span class="accordion-arrow" style="font-size:14px; transition:transform 0.2s ease;">▾</span>
+    </summary>
+    
+    <div style="display:flex; flex-direction:column; gap:14px; margin-top:12px; padding-top:12px; border-top:1px solid var(--border-subtle);">
+      
+      <!-- Habit Nature: Build Habit vs Quit Habit -->
+      <div>
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">طبيعة العادة</label>
+        <div class="bento-segmented-toggle" style="background:rgba(0,0,0,0.04); padding:3px;">
+          <button type="button" class="segmented-option active" data-nature="positive" id="naturePositiveBtn">بناء عادة إيجابية 🌟</button>
+          <button type="button" class="segmented-option" data-nature="quit" id="natureQuitBtn">إقلاع عن عادة سلبية 🚭</button>
+        </div>
+      </div>
 
-          <!-- Category Tag Selector (Dynamic & Extensible) -->
-          <div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-              <label style="font-size:13px; font-weight:700; color:var(--text-secondary);">التصنيف والوسم</label>
-              <button type="button" id="openAddCategoryInlineBtn" style="background:none; border:none; color:#3B82F6; font-size:12px; font-weight:800; cursor:pointer;">+ تصنيف جديد</button>
-            </div>
-            <div class="tags-filter-bar" id="modalTagSelector" style="padding-bottom:2px;">
-              <!-- Dynamic Category Pills Injected via JS -->
-            </div>
+      <!-- Time of Day Preference -->
+      <div id="timeOfDayGroup">
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">فترة اليوم المفضلة</label>
+        <div class="time-of-day-bar" id="modalTimeSelector" style="padding-bottom:2px;">
+          <button type="button" class="time-segment-pill active" data-modal-time="all">طوال اليوم</button>
+          <button type="button" class="time-segment-pill" data-modal-time="morning">صباح 🌅</button>
+          <button type="button" class="time-segment-pill" data-modal-time="afternoon">ظهيرة ☀️</button>
+          <button type="button" class="time-segment-pill" data-modal-time="evening">مساء 🌙</button>
+        </div>
+      </div>
 
-            <!-- Inline Category Creator Box -->
-            <div id="inlineCategoryForm" style="display:none; margin-top:8px; padding:10px 12px; background:var(--card-gray-subtle); border-radius:14px; border:1px solid var(--border-subtle); gap:8px; flex-direction:column;">
-              <div style="display:flex; gap:8px;">
-                <input type="text" id="newCatEmojiInput" class="bento-form-input" value="🏷️" style="width:48px; text-align:center; padding:8px;" maxlength="2">
-                <input type="text" id="newCatNameInput" class="bento-form-input" placeholder="اسم التصنيف الجديد..." style="flex:1; padding:8px 12px;">
-                <button type="button" id="saveInlineCatBtn" class="bento-todo-add-btn" style="padding:0 14px; font-size:12.5px;">حفظ</button>
-              </div>
-            </div>
-          </div>
+      <!-- Category Tag Selector -->
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary);">التصنيف والوسم</label>
+          <button type="button" id="openAddCategoryInlineBtn" style="background:none; border:none; color:var(--ios-blue); font-size:12px; font-weight:800; cursor:pointer;">+ تصنيف مخصص</button>
+        </div>
+        <div class="tags-filter-bar" id="modalTagSelector" style="padding-bottom:2px;">
+          <!-- Dynamic Category Pills Injected via JS -->
+        </div>
 
-          <!-- Habit Stacking / Chain -->
-          <div id="habitStackingGroup">
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">تراكم العادات (ربطها بعادة أخرى)</label>
-            <select id="habitStackSelect" class="bento-form-input" style="padding:12px 14px; cursor:pointer;">
-              <option value="">بدون ربط (عادة مستقلة)</option>
-              <!-- Populated dynamically -->
-            </select>
+        <!-- Inline Category Creator Box -->
+        <div id="inlineCategoryForm" style="display:none; margin-top:8px; padding:10px 12px; background:var(--card-white); border-radius:14px; border:1px solid var(--border-subtle); gap:8px; flex-direction:column;">
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="newCatEmojiInput" class="bento-form-input" value="🏷️" style="width:48px; text-align:center; padding:8px;" maxlength="2">
+            <input type="text" id="newCatNameInput" class="bento-form-input" placeholder="اسم التصنيف الجديد..." style="flex:1; padding:8px 12px;">
+            <button type="button" id="saveInlineCatBtn" class="bento-todo-add-btn" style="padding:0 14px; font-size:12.5px;">حفظ</button>
           </div>
+        </div>
+      </div>
 
-          <!-- Frequency Target: Daily vs Flexible Weekly -->
-          <div id="habitFrequencyGroup">
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">تكرار العادة والهدف</label>
-            <div class="bento-segmented-toggle" style="background:#F3F4F6; padding:4px; margin-bottom:8px;">
-              <button type="button" class="segmented-option active" data-freq="daily" id="freqDailyBtn">يومي (7 أيام/أسبوع) 📅</button>
-              <button type="button" class="segmented-option" data-freq="weekly" id="freqWeeklyBtn">أسبوعي مرن (مثلاً 3 أيام) 🎯</button>
-            </div>
-            <div id="weeklyTargetInputRow" style="display:none; align-items:center; gap:8px;">
-              <span style="font-size:12.5px; font-weight:700; color:var(--text-secondary);">عدد الأيام المستهدفة أسبوعياً:</span>
-              <input type="number" id="habitDaysPerWeekInput" class="bento-form-input" value="3" min="1" max="7" style="width:70px; padding:6px 10px; text-align:center;">
-              <span style="font-size:12.5px; font-weight:700;">أيام</span>
-            </div>
-          </div>
+      <!-- Habit Stacking / Chain -->
+      <div id="habitStackingGroup">
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">تراكم العادات (ربطها بعادة يومية راسخة)</label>
+        <select id="habitStackSelect" class="bento-form-input" style="padding:10px 14px; cursor:pointer; font-size:13px;">
+          <option value="">بدون ربط (عادة مستقلة)</option>
+        </select>
+      </div>
 
-          <!-- Mini Habit / Show-Up Version (James Clear 2-minute rule) -->
-          <div id="habitMiniGroup">
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">العادة المصغرة للأيام الشاقة (قاعدة الدقيقتين 🌱)</label>
-            <input type="text" id="habitMiniVersionInput" class="bento-form-input" placeholder="مثال: قراءة صفحة واحدة، 5 ضغطات (اختياري)..." autocomplete="off" style="padding:10px 12px; font-size:13px;">
-          </div>
+      <!-- Frequency Target -->
+      <div id="habitFrequencyGroup">
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">تكرار العادة والجدول</label>
+        <div class="bento-segmented-toggle" style="background:rgba(0,0,0,0.04); padding:3px; margin-bottom:6px;">
+          <button type="button" class="segmented-option active" data-freq="daily" id="freqDailyBtn">يومي (7 أيام/أسبوع) 📅</button>
+          <button type="button" class="segmented-option" data-freq="weekly" id="freqWeeklyBtn">أسبوعي مرن 🎯</button>
+        </div>
+        <div id="weeklyTargetInputRow" style="display:none; align-items:center; gap:8px; padding-top:4px;">
+          <span style="font-size:12.5px; font-weight:700; color:var(--text-secondary);">الأيام المستهدفة أسبوعياً:</span>
+          <input type="number" id="habitDaysPerWeekInput" class="bento-form-input" value="3" min="1" max="7" style="width:70px; padding:6px 10px; text-align:center; font-weight:700;">
+          <span style="font-size:12.5px; font-weight:700;">أيام</span>
+        </div>
+      </div>
 
-          <!-- Emoji Picker -->
-          <div>
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">الأيقونة</label>
-            <div class="emoji-picker" id="emojiPicker" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;">
-              <button type="button" class="emoji-option selected" data-emoji="💧" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">💧</button>
-              <button type="button" class="emoji-option" data-emoji="📖" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">📖</button>
-              <button type="button" class="emoji-option" data-emoji="🏃‍♂️" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">🏃‍♂️</button>
-              <button type="button" class="emoji-option" data-emoji="🧘‍♂️" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">🧘‍♂️</button>
-              <button type="button" class="emoji-option" data-emoji="💻" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">💻</button>
-              <button type="button" class="emoji-option" data-emoji="🥗" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">🥗</button>
-              <button type="button" class="emoji-option" data-emoji="🚭" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">🚭</button>
-              <button type="button" class="emoji-option" data-emoji="⚡" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">⚡</button>
-              <button type="button" class="emoji-option" data-emoji="🎯" style="width:44px; height:44px; border-radius:14px; border:1px solid #E5E7EB; background:#FFF; font-size:20px; cursor:pointer;">🎯</button>
-            </div>
-          </div>
+      <!-- Mini Habit / 2-minute rule -->
+      <div id="habitMiniGroup">
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:4px; display:block;">العادة المصغرة للأيام الشاقة (قاعدة الدقيقتين 🌱)</label>
+        <input type="text" id="habitMiniVersionInput" class="bento-form-input" placeholder="مثال: قراءة صفحة واحدة، 5 ضغطات..." autocomplete="off" style="padding:8px 12px; font-size:13px;">
+      </div>
 
-          <!-- Habit Color Picker (Liquid Glass Accents for Heatmap) -->
-          <div>
-            <label style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">لون السلسلة والخريطة الحرارية (Theme Color)</label>
-            <div class="habit-color-picker" id="habitColorPicker" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;">
-              <button type="button" class="color-circle-btn selected" data-color="#3B82F6" style="background:#3B82F6;" title="Blue"></button>
-              <button type="button" class="color-circle-btn" data-color="#8B5CF6" style="background:#8B5CF6;" title="Purple"></button>
-              <button type="button" class="color-circle-btn" data-color="#10B981" style="background:#10B981;" title="Emerald"></button>
-              <button type="button" class="color-circle-btn" data-color="#F97316" style="background:#F97316;" title="Orange"></button>
-              <button type="button" class="color-circle-btn" data-color="#EC4899" style="background:#EC4899;" title="Pink"></button>
-              <button type="button" class="color-circle-btn" data-color="#06B6D4" style="background:#06B6D4;" title="Cyan"></button>
-              <button type="button" class="color-circle-btn" data-color="#F59E0B" style="background:#F59E0B;" title="Amber"></button>
-              <button type="button" class="color-circle-btn" data-color="#6366F1" style="background:#6366F1;" title="Indigo"></button>
-            </div>
-            <input type="hidden" id="habitColorInput" value="#3B82F6">
-          </div>
+      <!-- Emoji Picker -->
+      <div>
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">أيقونة العادة</label>
+        <div class="emoji-picker" id="emojiPicker" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;">
+          <button type="button" class="emoji-option selected" data-emoji="💧" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">💧</button>
+          <button type="button" class="emoji-option" data-emoji="📖" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">📖</button>
+          <button type="button" class="emoji-option" data-emoji="🏃‍♂️" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🏃‍♂️</button>
+          <button type="button" class="emoji-option" data-emoji="🧘‍♂️" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🧘‍♂️</button>
+          <button type="button" class="emoji-option" data-emoji="💻" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">💻</button>
+          <button type="button" class="emoji-option" data-emoji="🥗" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🥗</button>
+          <button type="button" class="emoji-option" data-emoji="🚭" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🚭</button>
+          <button type="button" class="emoji-option" data-emoji="⚡" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">⚡</button>
+          <button type="button" class="emoji-option" data-emoji="🎯" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🎯</button>
+          <button type="button" class="emoji-option" data-emoji="🌙" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🌙</button>
+          <button type="button" class="emoji-option" data-emoji="✨" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">✨</button>
+          <button type="button" class="emoji-option" data-emoji="🍎" style="width:40px; height:40px; border-radius:12px; border:1px solid #E5E7EB; background:#FFF; font-size:19px; cursor:pointer;">🍎</button>
+        </div>
+      </div>
 
-          <div class="habit-modal-actions-row" style="display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap;">
-            <button type="submit" id="habitSubmitBtn" class="bento-submit-btn" style="flex:1; margin-top:0;">إضافة العادة</button>
-            <button type="button" id="habitResetHistoryBtn" class="habit-modal-reset-btn" style="display:none; padding:13px 18px; border-radius:var(--radius-button); border:1px solid var(--border-medium); background:var(--card-gray-subtle); color:var(--text-secondary); font-size:13.5px; font-weight:750; cursor:pointer; font-family:inherit; transition:all 0.18s ease;" title="تصفير السجل وإبقاء العادة">تصفير السجل ↺</button>
-            <button type="button" id="habitDeleteBtn" class="habit-modal-delete-btn" style="display:none; padding:13px 18px; border-radius:var(--radius-button); border:1px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.1); color:#DC2626; font-size:13.5px; font-weight:750; cursor:pointer; font-family:inherit; transition:all 0.18s ease;" title="حذف العادة نهائياً">حذف العادة 🗑️</button>
-          </div>
-        </form>
+      <!-- Color Palette -->
+      <div>
+        <label style="font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-bottom:6px; display:block;">لون السلسلة والمخطط</label>
+        <div class="habit-color-picker" id="habitColorPicker" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+          <button type="button" class="color-circle-btn selected" data-color="#06B6D4" style="background:#06B6D4;" title="Cyan"></button>
+          <button type="button" class="color-circle-btn" data-color="#8B5CF6" style="background:#8B5CF6;" title="Purple"></button>
+          <button type="button" class="color-circle-btn" data-color="#10B981" style="background:#10B981;" title="Emerald"></button>
+          <button type="button" class="color-circle-btn" data-color="#3B82F6" style="background:#3B82F6;" title="Blue"></button>
+          <button type="button" class="color-circle-btn" data-color="#EC4899" style="background:#EC4899;" title="Pink"></button>
+          <button type="button" class="color-circle-btn" data-color="#F59E0B" style="background:#F59E0B;" title="Amber"></button>
+          <button type="button" class="color-circle-btn" data-color="#6366F1" style="background:#6366F1;" title="Indigo"></button>
+        </div>
+        <input type="hidden" id="habitColorInput" value="#06B6D4">
+      </div>
+
+    </div>
+  </details>
+
+  <!-- Action Buttons -->
+  <div class="habit-modal-actions-row" style="display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap;">
+    <button type="submit" id="habitSubmitBtn" class="bento-submit-btn" style="flex:1; margin-top:0; min-height:46px; font-size:15px; font-weight:850;">إنشاء العادة (+10 XP) ✨</button>
+    <button type="button" id="habitResetHistoryBtn" class="habit-modal-reset-btn" style="display:none; padding:12px 16px; border-radius:var(--radius-button); border:1px solid var(--border-glass); background:var(--card-gray-subtle); color:var(--text-secondary); font-size:13px; font-weight:750; cursor:pointer; font-family:inherit; min-height:46px;" title="تصفير السلسلة وإبقاء العادة في الجدول">تصفير السجل فقط ↺</button>
+    <button type="button" id="habitDeleteBtn" class="habit-modal-delete-btn" style="display:none; padding:12px 16px; border-radius:var(--radius-button); border:1px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.1); color:#DC2626; font-size:13px; font-weight:750; cursor:pointer; font-family:inherit; min-height:46px;" title="حذف العادة وسجلها نهائياً">حذف العادة 🗑️</button>
+  </div>
+</form>
+
       </div>
     </div>
     <!-- Modal: Routine Flow Runner (مشغل سلاسل الروتين) -->
@@ -1218,6 +1263,8 @@
   </div>
 
   <!-- Core Modular Architecture (EventBus, Plugins, Widgets & DragDrop) -->
+  <script src="js/core/i18n.js"></script>
+  <script src="js/core/statistics-engine.js"></script>
   <script src="js/core/event-bus.js"></script>
   <script src="js/core/plugin-system.js"></script>
   <script src="js/core/widget-registry.js"></script>
@@ -1235,5 +1282,49 @@
       });
     }
   </script>
+<!-- Universal Command Palette Modal (Cmd + K) -->
+<div id="commandPaletteModal" class="command-palette-overlay" style="display:none;">
+  <div class="command-palette-box" role="dialog" aria-modal="true">
+    <div class="command-search-header">
+      <span class="command-search-icon">⌘</span>
+      <input type="text" id="commandPaletteInput" class="command-search-input" placeholder="ابحث عن عادة، مهمة، أداة، أو تنقل سريعاً... (Esc للإغلاق)" autocomplete="off">
+      <span class="command-shortcut-hint">ESC</span>
+    </div>
+    <div class="command-quick-tabs">
+      <button type="button" class="command-tab-chip active" data-cmd-filter="all">الكل</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="habits">العادات</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="tools">الأدوات (15)</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="pages">الصفحات</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="actions">إجراءات سريعة</button>
+    </div>
+    <div class="command-results-list" id="commandResultsList">
+      <!-- Injected Dynamically -->
+    </div>
+    <div class="command-palette-footer">
+      <div class="command-footer-hints">
+        <span><kbd class="kbd-key">↑</kbd><kbd class="kbd-key">↓</kbd> للتنقل</span>
+        <span><kbd class="kbd-key">↵</kbd> للتنفيذ</span>
+        <span><kbd class="kbd-key">1-3</kbd> للتبديل بين التبويبات</span>
+        <span><kbd class="kbd-key">ESC</kbd> للإغلاق</span>
+      </div>
+      <div style="font-size:11px; font-weight:700; color:var(--text-tertiary);">عاداتي برو Bento 2.0</div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Bento Confirmation Dialog Modal -->
+<div id="confirmActionModal" class="modal-backdrop" style="display:none; z-index:9999;" role="dialog" aria-modal="true">
+  <div class="modal-sheet" style="max-width:440px; margin:auto; padding:24px; text-align:center;">
+    <div id="confirmModalIcon" style="font-size:42px; margin-bottom:12px;">⚠️</div>
+    <h3 id="confirmModalTitle" style="font-size:19px; font-weight:900; margin-bottom:8px; color:var(--text-primary);">تأكيد الإجراء</h3>
+    <p id="confirmModalMessage" style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px;">هل أنت متأكد من المتابعة؟</p>
+    <div id="confirmModalDetails" style="font-size:12.5px; color:var(--text-tertiary); background:var(--card-gray-subtle); padding:10px; border-radius:12px; margin-bottom:18px; line-height:1.5; display:none;"></div>
+    <div style="display:flex; gap:10px; justify-content:center;">
+      <button type="button" id="confirmCancelBtn" class="bento-btn" style="flex:1; padding:12px; font-weight:750; border-radius:var(--radius-button); border:1px solid var(--border-glass); background:var(--card-gray-subtle); color:var(--text-primary); cursor:pointer;">إلغاء</button>
+      <button type="button" id="confirmProceedBtn" class="bento-btn danger" style="flex:1; padding:12px; font-weight:850; border-radius:var(--radius-button); border:none; background:#EF4444; color:#FFF; cursor:pointer;">تأكيد</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

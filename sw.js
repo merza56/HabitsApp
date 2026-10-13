@@ -1,4 +1,4 @@
-const CACHE_NAME = 'habits-app-v10';
+const CACHE_NAME = 'habits-app-v13';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -8,9 +8,12 @@ const ASSETS_TO_CACHE = [
   './js/tool-page.js',
   './install.html',
   './download.html',
+  './css/tokens.css',
   './css/theme.css',
   './css/layout.css',
   './css/components.css',
+  './js/core/i18n.js',
+  './js/core/statistics-engine.js',
   './js/core/event-bus.js',
   './js/core/plugin-system.js',
   './js/core/widget-registry.js',

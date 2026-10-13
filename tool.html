@@ -5,7 +5,7 @@
   <title id="pageTitle">تفاصيل الأداة | عاداتي برو</title>
 
   <!-- iOS & PWA Viewport & Fullscreen Meta Tags -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -331,6 +331,13 @@
       </nav>
 
       <div class="top-bar-actions">
+<button id="openCommandPaletteBtn" class="icon-btn-circle" title="لوحة الأوامر السريعة (Cmd+K)" aria-label="لوحة الأوامر السريعة">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</button>
+
         <button id="themeToggleBtn" class="icon-btn-circle" aria-label="تبديل الثيم" title="تبديل الوضع">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <circle cx="12" cy="12" r="5"></circle>
@@ -402,5 +409,33 @@
   <script src="js/core/tools-engine.js"></script>
   <script src="js/core/tools-data.js"></script>
   <script src="js/tool-page.js"></script>
+<!-- Universal Command Palette Modal (Cmd + K) -->
+<div id="commandPaletteModal" class="command-palette-overlay" style="display:none;">
+  <div class="command-palette-box" role="dialog" aria-modal="true">
+    <div class="command-search-header">
+      <span class="command-search-icon">⌘</span>
+      <input type="text" id="commandPaletteInput" class="command-search-input" placeholder="ابحث عن أداة، أو تنقل سريعاً... (أو اضغط Esc للإغلاق)" autocomplete="off">
+      <span class="command-shortcut-hint">ESC</span>
+    </div>
+    <div class="command-quick-tabs">
+      <button type="button" class="command-tab-chip active" data-cmd-filter="all">الكل</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="tools">الأدوات (15)</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="pages">الصفحات</button>
+      <button type="button" class="command-tab-chip" data-cmd-filter="actions">إجراءات سريعة</button>
+    </div>
+    <div class="command-results-list" id="commandResultsList">
+      <!-- Injected Dynamically -->
+    </div>
+    <div class="command-palette-footer">
+      <div class="command-footer-hints">
+        <span><kbd class="kbd-key">↑</kbd><kbd class="kbd-key">↓</kbd> للتنقل</span>
+        <span><kbd class="kbd-key">↵</kbd> للاختيار</span>
+        <span><kbd class="kbd-key">ESC</kbd> للإغلاق</span>
+      </div>
+      <div style="font-size:11px; font-weight:700; color:var(--text-tertiary);">عاداتي برو Bento 2.0</div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
